@@ -1,0 +1,13 @@
+<div class="box">
+    <form [formGroup]="registrationForm">
+        <input type="text" placeholder="Enter First Name" formControlName="firstName"><br>
+        <input type="text" placeholder="Enter Last Name" formControlName="lastName"><br>
+        <input type="number" placeholder="Enter Age" formControlName="age"><br>
+        <input type="email" placeholder="Enter Email" formControlName="email"><br>
+        <input type="number" placeholder="Enter Mobile Number" formControlName="mobileNo"><br>
+        <input type="password" placeholder="Enter Password" formControlName="password"><br>
+        <button (click)="onSubmit()">Submit</button>
+    </form>
+</div>
+
+<button (click)="getAllUser()">GetAllUsers</button>
