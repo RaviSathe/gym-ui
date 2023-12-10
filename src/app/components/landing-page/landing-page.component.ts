@@ -8,11 +8,17 @@ import { LoginRegistrationService } from 'src/app/appService/login-registration.
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit{
-
-  constructor(private router:Router , private _loginService: LoginRegistrationService){}
+  
+  loginButton:boolean = false
+  constructor(private router:Router , private _loginService: LoginRegistrationService){
+    this.loginButton = this._loginService.loginButton
+  }
 
   ngOnInit(){
-
+    if(this._loginService.userLoggedIn === true || localStorage.getItem("user")){
+      this.loginButton = true
+      this._loginService.userLoggedIn = true
+    }
   }
 
   knowMore(requirement:any){
@@ -55,6 +61,12 @@ export class LandingPageComponent implements OnInit{
 
   login(){
     this.router.navigate(['register-login'])
+  }
+
+  logout(){
+    localStorage.clear()
+    this._loginService.userLoggedIn = false
+    this.loginButton = false
   }
 
 }

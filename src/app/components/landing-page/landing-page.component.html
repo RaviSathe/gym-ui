@@ -26,7 +26,8 @@
             </ul>
         </div>
         <div class="login-btn">
-            <button (click)="login()">Login</button>
+            <button *ngIf="!loginButton" (click)="login()">Login</button>
+            <button *ngIf="loginButton" (click)="logout()">LogOut</button>
         </div>
         <div class="label">
             <label >

@@ -21,9 +21,10 @@ export class LoginRegistrationComponent {
       'firstName' : new FormControl(''),
       'lastName' : new FormControl(''),
       'email' : new FormControl(''),
+      'age' : new FormControl(''),
       'mobileNo' : new FormControl(''),
       'password' : new FormControl(''),
-      'confirmPassword' : new FormControl(''),
+      // 'confirmPassword' : new FormControl(''),
     })
 
     this.loginForm = new FormGroup({
@@ -36,17 +37,22 @@ export class LoginRegistrationComponent {
   onRegistration(){
     this._ser.addUser(this.registrationForm.value).subscribe((res)=>{
       console.log(res);
+      this.loginPage = true
     })
   }
 
   onLogin(){
     console.log("Login Works");
-    this.router.navigate([''])
+    this._ser.login(this.loginForm.value).subscribe((res)=>{
+      console.log(res);
+      this.router.navigate([''])
+      this._ser.userLoggedIn = true
+      localStorage.setItem("user",JSON.parse(JSON.stringify(this.loginForm.value.email)))
+    })
   }
 
   switchTab(){
     this.loginPage = !this.loginPage
-    
   }
 
   getAllUser(){

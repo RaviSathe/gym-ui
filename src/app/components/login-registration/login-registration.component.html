@@ -3,11 +3,12 @@
         <form *ngIf="!loginPage" [formGroup]="registrationForm" (onsubmit)="onRegistration()">
             <input type="text" placeholder="Enter First Name" formControlName="firstName"><br>
             <input type="text" placeholder="Enter Last Name" formControlName="lastName"><br>
+            <input type="number" placeholder="Enter age" formControlName="age"><br>
             <input type="email" placeholder="Enter Email" formControlName="email"><br>
             <input type="number" placeholder="Enter Mobile Number" formControlName="mobileNo"><br>
             <input type="password" placeholder="Enter Password" formControlName="password"><br>
-            <input type="password" placeholder="Enter Password" formControlName="confirmPassword"><br>
-            <button>Submit</button><br>
+            <!-- <input type="password" placeholder="Enter Password" formControlName="confirmPassword"><br> -->
+            <button (click)="onRegistration()">Submit</button><br>
             <a (click)="switchTab()">Already Have account ? </a>
         </form>
     
