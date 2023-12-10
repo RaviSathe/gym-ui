@@ -11,6 +11,8 @@ export class LoginRegistrationService {
 
   private Url: string = 'http://localhost:9090';
 
+  userLoggedIn:boolean = false;
+
   public addUser(user:any){
     return this.http.post(this.Url,user)
   }

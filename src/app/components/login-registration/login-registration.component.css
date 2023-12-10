@@ -17,3 +17,8 @@ button{
     padding: 10px;
     cursor: pointer;
 }
+
+a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
