@@ -18,6 +18,10 @@ import { GymRequirementComponent } from './tabs/gym-requirement/gym-requirement.
 import { MachineRepairComponent } from './tabs/machine-repair/machine-repair.component';
 import { ProtineCafeComponent } from './tabs/protine-cafe/protine-cafe.component';
 import { SportsWareComponent } from './tabs/sports-ware/sports-ware.component';
+import { ServiceComponent } from './afterLogin/service/service.component';
+import { AboutComponent } from './afterLogin/about/about.component';
+import { ContactComponent } from './afterLogin/contact/contact.component';
+import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { SportsWareComponent } from './tabs/sports-ware/sports-ware.component';
     GymRequirementComponent,
     MachineRepairComponent,
     ProtineCafeComponent,
-    SportsWareComponent
+    SportsWareComponent,
+    ServiceComponent,
+    AboutComponent,
+    ContactComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

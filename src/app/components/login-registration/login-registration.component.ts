@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRegistrationService } from 'src/app/appService/login-registration.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login-registration',
@@ -15,6 +16,9 @@ export class LoginRegistrationComponent {
   loginPage:boolean = false;
   registrationForm!:FormGroup;
   loginForm!:FormGroup;
+  userName:string=''
+
+  // @Output() userName = new EventEmitter<any>
 
   ngOnInit(){
     this.registrationForm = new FormGroup({
@@ -44,10 +48,12 @@ export class LoginRegistrationComponent {
   onLogin(){
     console.log("Login Works");
     this._ser.login(this.loginForm.value).subscribe((res)=>{
-      console.log(res);
-      this.router.navigate([''])
+      // console.log(res);
+      this.router.navigate(['home'])
       this._ser.userLoggedIn = true
-      localStorage.setItem("user",JSON.parse(JSON.stringify(this.loginForm.value.email)))
+      let data = res
+      const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data), 'data_key').toString();
+      localStorage.setItem("user", encryptedData)
     })
   }
 

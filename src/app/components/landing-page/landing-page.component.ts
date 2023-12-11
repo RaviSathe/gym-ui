@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginRegistrationService } from 'src/app/appService/login-registration.service';
+import * as CryptoJS from 'crypto-js'
 
 @Component({
   selector: 'app-landing-page',
@@ -10,14 +11,27 @@ import { LoginRegistrationService } from 'src/app/appService/login-registration.
 export class LandingPageComponent implements OnInit{
   
   loginButton:boolean = false
+  decryptedUser:any
+  userName:any
+
   constructor(private router:Router , private _loginService: LoginRegistrationService){
     this.loginButton = this._loginService.loginButton
   }
 
   ngOnInit(){
+    this.decryptData()
     if(this._loginService.userLoggedIn === true || localStorage.getItem("user")){
       this.loginButton = true
       this._loginService.userLoggedIn = true
+      this.userName = this.decryptedUser.firstName
+    }
+  }
+
+  decryptData(){
+    if(localStorage.getItem('user')){
+      const eText = localStorage.getItem('user') || '';
+      const decryptedWord = CryptoJS.AES.decrypt(eText , 'data_key')
+      this.decryptedUser = JSON.parse(decryptedWord.toString(CryptoJS.enc.Utf8))
     }
   }
 
@@ -64,9 +78,17 @@ export class LandingPageComponent implements OnInit{
   }
 
   logout(){
-    localStorage.clear()
-    this._loginService.userLoggedIn = false
-    this.loginButton = false
+    if(confirm("You Want to Logout ?")){
+      localStorage.clear()
+      this._loginService.userLoggedIn = false
+      this.loginButton = false
+    };
+      
+    
+  }
+
+  enquiryForm(){
+
   }
 
 }

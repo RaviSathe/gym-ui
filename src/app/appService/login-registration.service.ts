@@ -1,22 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserModule } from 'src/app/model/user/user.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginRegistrationService {
 
-  constructor(private http:HttpClient) {
-    
-   }
-
+  constructor(private http:HttpClient) {}
   
   private Url: string = 'http://localhost:9090';
 
   loginButton:boolean = false
   userLoggedIn:boolean = false;
+  userName:any
 
   public addUser(user:any){
     return this.http.post(this.Url,user)
@@ -27,7 +24,7 @@ export class LoginRegistrationService {
   }
 
   public login(data:any){
-    return this.http.post(this.Url,data)
+    return this.http.post('http://localhost:9090/login',data)
   }
 
 }

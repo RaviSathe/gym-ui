@@ -11,21 +11,23 @@
 <body>
 
     <div class="box">
-
         <section class="section1">
             <div class="logo">
-            <img src="/assets/bg.jpg" alt="" width="70px">
+            <img src="/assets/logo.png" alt="" width="70px" routerLink="/">
         </div>
         <div class="navTabs">
             <ul>
-                <li>Home</li>
+                <li routerLink="home">Home</li>
                 <li>Shops</li>
-                <li>Service</li>
-                <li>Contact</li>
-                <li>About</li>
+                <li routerLink="service">Service</li>
+                <li routerLink="contact-us">Contact</li>
+                <li routerLink="about">About</li>
+                <li >Language</li>
             </ul>
         </div>
         <div class="login-btn">
+            <h2 *ngIf="loginButton">{{userName | uppercase}}</h2>
+            <!-- <h2>hello</h2> -->
             <button *ngIf="!loginButton" (click)="login()">Login</button>
             <button *ngIf="loginButton" (click)="logout()">LogOut</button>
         </div>
@@ -40,7 +42,7 @@
     <!-- Section2------------------ -->
 
     <div class="box2">
-        <section class="section2">
+        <!-- <section class="section2">
             <div class="item">
             <img src="/assets/bg.jpg" alt="">
             <h2>Tungstan Gym</h2>
@@ -117,9 +119,46 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ipsa blanditiis doloremque minima dolores a facilis pariatur tempore molestiae odio!</p>
             <button (click)="knowMore('commingSoon')">Know More</button>
         </div>
+        </section> -->
+    </div>
+
+<!-- ---------------------section 3 footer----------------- -->
+
+    <section class="footer">
+        <div class="logo-links">
+            <h2>Go<span>fit</span></h2>
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="support">
+            <h4>Support</h4>
+            <p>Contact us</p>
+            <p>FAQ</p>
+            <p>Downloads</p>
+            <p>Project Registration</p>
+            <p>Spare parts</p>
+            <p>Developer(Ravi Sathe)</p>
+        </div>
+        <div class="features">
+            <h4>Gofit</h4>
+            <p>About Gofit</p>
+            <p>Gofit Designs</p>
+            <p>Gofit Access</p>
+        </div>
+        <div class="contact-form">
+            <form class="form">
+                <input type="text" placeholder="Enter Name"><br>
+                <input type="text" placeholder="Enter Email or Phone"><br>
+                <button (click)="enquiryForm()">Send</button>
+            </form>
+        </div>
     </section>
+
 </div>
-</div>
+
+<button (click)="decryptData()">DecrypteWord</button>
 
 <script src="script.js"></script>
 </body>

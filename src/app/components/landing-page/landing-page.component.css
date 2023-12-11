@@ -14,18 +14,19 @@
 }
 
 .logo img{
-    margin: 7px;
+    /* margin: 7px;      */
+    /* filter: b; */
 }
 .section1{
     display: flex;
     justify-content: space-around;
     background: black;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .navTabs ul li{
     display: inline-block;
-    margin: 15px 20px;
+    margin: 20px;
     background: transparent;
     color: rgb(255, 47, 0);
     cursor: pointer;
@@ -36,13 +37,13 @@
 
 .navTabs ul li:hover{
     /* background-color: white; */
-    color: rgb(113, 51, 0);
+    color: gold;
     transform: scale(1.2);
 }
 
 .login-btn button{
-    background-color: rgb(255, 80, 32);
-    color: black;
+    background-color: rgb(42, 42, 42);
+    color: white;
     border: none;
     padding: 15px 25px;
     font-size: 15px;
@@ -50,14 +51,26 @@
     margin: 10px;
     font-weight: bold;
     letter-spacing: 0.5px;
+    transition: 0.4s;
 }
 
 .login-btn button:hover{
-    border:1px solid rgb(255, 80, 32) ;
-    color: rgb(255, 80, 32);
+    border:1px solid rgb(42, 42, 42) ;
+    color: rgb(42, 42, 42);
     background: white;
-    padding:14px 24px ;
+    /* padding:13px 24px ; */
+    transform: scale(1.1);
     cursor: pointer;
+}
+
+.login-btn h2{
+    color: white;
+    margin: 20px 10px;
+}
+
+.login-btn{
+    display: flex;
+    justify-content: space-between;
 }
 
 .section1 .label{
@@ -69,29 +82,35 @@
 
 .section2 .item{
     z-index: 10;
-    width: 400px;
+    width: 380px;
     height: 480px;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
     text-align: center;
     position: relative;
     transition: 0.5s;
     cursor: pointer;
-    background-color: lightgray;
+    color: white;
+    background-color: black;
 }
 
 .box2{
-    background: url(/assets/gym-bg.jpg)no-repeat;
+    /* background: url(/assets/gym-bg.jpg)no-repeat; */
+    background: rgb(42, 42, 42);
     background-size: cover;
     width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    height: 100vh;
 }
 
 .section2{
-    width: 85%;
+    position: relative;
+    width: 98%;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 20px;
+    column-gap: 30px;
     align-items: center;
-    row-gap: 20px;
+    row-gap: 30px;
     margin: auto;
     text-align: center;
     align-items: center;
@@ -102,6 +121,7 @@
     object-fit: cover;
     background-position: center;
     transition: 0.5s;
+    z-index: 9999;
 }
 .item img:hover{
     height: 400px;
@@ -113,22 +133,128 @@
 }
 
 .item h2{
+    color: gold;
     margin: 25px;
     font-weight: bold;
+    position: absolute;
+    bottom: 140px;
+    left: 90px;
 }
 
 .item p{
     font-size: 18px;
     margin-bottom: 5px;
+    position: absolute;
+    bottom: 65px;
 }
 
 .item button{
-    background-color: rgb(0, 142, 198);
+    background-color: rgb(42, 42, 42);
     padding: 10px 20px;
     color: white;
     border: none;
     border-radius: 30px;
     font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 130px;
+}
+
+.item button:hover{
+    color: white;
+    background: black;
+    border:1px solid white;
+
+}
+
+/* ----------------------section 3-------------------- */
+
+.footer{
+    /* position: absolute;
+    bottom: 0; */
+    z-index: 999;
+    height: 300px;
+    width: 100%;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 90px;
+}
+
+.footer .logo-links h2{
+    margin: 20px 10px;
+    color: red;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.footer .logo-links h2 span{
+    color: white;
+    cursor: pointer;
+}
+
+.footer .logo-links a{
+    margin: 30px 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.support h4{
+    color: grey;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.support p{
+    margin-top: 5px;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.support p:hover{
+    text-decoration: underline;
+}
+
+.features h4{
+    color: grey;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.features p{
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.features p:hover{
+    text-decoration: underline;
+}
+
+.contact-form .form{
+    margin-top: 20px;
+}
+
+.contact-form .form input{
+    padding: 10px 30px;
+    background: transparent;
+    border: none;
+    margin-bottom: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.contact-form .form button{
+    padding: 10px 35px;
+    margin-top: 5px;
+    background:linear-gradient(red,rgb(65, 64, 64));
+    color: white;
+    border: none;
+    margin-left: 30px;
+    transition: 0.4s;
+}
+
+.contact-form .form button:hover{
+    transform: scale(1.1);
     cursor: pointer;
 }
 
@@ -157,13 +283,21 @@
         height: 300px;
     }
 
+    .item h2{
+        position: absolute;
+        bottom: 120px;
+        left: 28px;
+    }
+
     .item p{
         font-size: 14px;
         margin: 5px;
     }
-
+    
     .item button{
         font-size: 14px;
+        position: absolute;
+        left: 95px;
     }
 
     .section1{
@@ -172,5 +306,47 @@
 
     .section1 .navTabs, .login-btn{
         display: none;
+    }
+
+    .footer{
+        flex-wrap: wrap;
+        height: 500px;
+    }
+}
+
+/* -----------------Responsive for small screen i.e 350px below------------------- */
+
+@media(max-width:350px){
+    .section2 .item{
+        width: 250px;
+        height: 400px;
+    }
+
+    .item img{
+        width: 100%;
+        height: 200px;
+    }
+
+    .item h2{
+        font-size: 17px;
+        position: absolute;
+        bottom: 128px;
+        left: 12px;
+    }
+
+    .item button{
+        font-size: 10px;
+        position: absolute;
+        left: 70px;
+    }
+
+    .item p{
+        font-size: 14px;
+        margin: 2px;
+    }
+    .footer{
+        display: flex;
+        flex-direction: column;
+        /* padding-left: 50px; */
     }
 }
