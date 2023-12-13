@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild , AfterViewInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginRegistrationService } from 'src/app/appService/login-registration.service';
+import * as CryptoJS from 'crypto-js'
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit{
 
   loginButton:boolean = false
   decryptedUser:any
@@ -15,6 +17,12 @@ export class HomeComponent {
 
   constructor(private router:Router , private _loginService: LoginRegistrationService){
     this.loginButton = this._loginService.loginButton
+  }
+
+  @ViewChild(HeaderComponent) header!:HeaderComponent
+
+  ngAfterViewInit(){
+    this.header?.ngOnInit()
   }
 
   ngOnInit(){
@@ -31,6 +39,7 @@ export class HomeComponent {
       const eText = localStorage.getItem('user') || '';
       const decryptedWord = CryptoJS.AES.decrypt(eText , 'data_key')
       this.decryptedUser = JSON.parse(decryptedWord.toString(CryptoJS.enc.Utf8))
+      // console.log(this.decryptedUser);
     }
   }
 

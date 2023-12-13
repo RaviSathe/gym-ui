@@ -49,10 +49,10 @@ export class LoginRegistrationComponent {
     console.log("Login Works");
     this._ser.login(this.loginForm.value).subscribe((res)=>{
       // console.log(res);
-      this.router.navigate(['home'])
       this._ser.userLoggedIn = true
       let data = res
       const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data), 'data_key').toString();
+      this.router.navigate(['home'])
       localStorage.setItem("user", encryptedData)
     })
   }

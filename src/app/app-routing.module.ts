@@ -17,24 +17,26 @@ import { ServiceComponent } from './afterLogin/service/service.component';
 import { ContactComponent } from './afterLogin/contact/contact.component';
 import { AboutComponent } from './afterLogin/about/about.component';
 import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
+import { authGuard } from './afterLogin/guard/auth.guard';
 
 const routes: Routes = [
-  {path:'',component:LandingPageComponent},
+  {path:'', redirectTo:'landing-page', pathMatch:'full'},
+  {path:'landing-page',component:LandingPageComponent},
   {path:'register-login',component:LoginRegistrationComponent},
   {path:'home',component:HomeComponent},
   {path:'service',component:ServiceComponent},
   {path:'contact-us',component:ContactComponent},
   {path:'about',component:AboutComponent},
-  {path:'gyms',component:GymsComponent},
-  {path:'diet-plan',component:DietPlanComponent},
-  {path:'gym-equipment',component:GymEquipmentComponent},
-  {path:'gym-requiremnet',component:GymRequirementComponent},
-  {path:'house-keeping',component:HouseKeepingComponent},
-  {path:'machine-repair',component:MachineRepairComponent},
-  {path:'personal-trainer',component:PersonalTrainerComponent},
-  {path:'protine',component:ProtineComponent},
-  {path:'protine-cafe',component:ProtineCafeComponent},
-  {path:'sports-ware',component:SportsWareComponent},
+  {path:'gyms',component:GymsComponent,canActivate:[authGuard]},
+  {path:'diet-plan',component:DietPlanComponent,canActivate:[authGuard]},
+  {path:'gym-equipment',component:GymEquipmentComponent,canActivate:[authGuard]},
+  {path:'gym-requiremnet',component:GymRequirementComponent,canActivate:[authGuard]},
+  {path:'house-keeping',component:HouseKeepingComponent,canActivate:[authGuard]},
+  {path:'machine-repair',component:MachineRepairComponent,canActivate:[authGuard]},
+  {path:'personal-trainer',component:PersonalTrainerComponent,canActivate:[authGuard]},
+  {path:'protine',component:ProtineComponent,canActivate:[authGuard]},
+  {path:'protine-cafe',component:ProtineCafeComponent,canActivate:[authGuard]},
+  {path:'sports-ware',component:SportsWareComponent,canActivate:[authGuard]},
   {path:'**',component:PageNotFoundComponent},
 ];
 

@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as CryptoJS from 'crypto-js';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,16 @@ export class LoginRegistrationService {
   loginButton:boolean = false
   userLoggedIn:boolean = false;
   userName:any
+  decryptedUser:any
+
+  decryptData(){
+    if(localStorage.getItem('user')){
+      const eText = localStorage.getItem('user') || '';
+      const decryptedWord = CryptoJS.AES.decrypt(eText , 'data_key')
+      this.decryptedUser = JSON.parse(decryptedWord.toString(CryptoJS.enc.Utf8))
+      console.log(this.decryptedUser);
+    }
+  }
 
   public addUser(user:any){
     return this.http.post(this.Url,user)

@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* font-family: "Poppins", sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-position: center; */
+    /* background-image: c; */
+    /* background-size: cover; */
+    /* background: rgb(155, 152, 152); */
+}
+.box{
+    margin: auto;
+}
+
+.logo img{
+    /* margin: 7px;      */
+    /* filter: b; */
+    background: gold;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.logo img:hover{
+    box-shadow: 0 0 20px gold;
+}
+.section1{
+    display: flex;
+    justify-content: space-around;
+    background: black;
+    /* margin-bottom: 10px; */
+}
+
+.navTabs ul li{
+    display: inline-block;
+    margin: 20px;
+    background: transparent;
+    color: rgb(255, 47, 0);
+    cursor: pointer;
+    transition: 0.4s;
+    color: white;
+    font-size: 20px;
+}
+
+.navTabs ul li:hover{
+    /* background-color: white; */
+    color: gold;
+    filter: drop-shadow(0 0 20px red);
+    /* box-shadow: 0 0 20px gold; */
+    transform: scale(1.2);
+}
+
+.login-btn button{
+    background-color: rgb(42, 42, 42);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 15px;
+    border-radius: 30px;
+    margin: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: 0.4s;
+}
+
+.login-btn button:hover{
+    border:1px solid gold ;
+    color: gold;
+    background: white;
+    /* padding:13px 24px ; */
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0 0 20px gold;
+}
+
+.login-btn h2{
+    color: white;
+    margin: 20px 10px;
+}
+
+.login-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.section1 .label{
+    display: none;
+}
+
+/* ---------Responsive --------------------------- */
+
+@media(max-width:900px){
+    .section1 .label{
+        display: block;
+        color: rgb(255, 80, 32);
+        margin: 10px;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    .label .close-btn{
+        display: none;
+    }
+
+    .section1{
+        justify-content: space-between;
+    }
+
+    .section1 .navTabs, .login-btn{
+        display: none;
+    }
+
+}

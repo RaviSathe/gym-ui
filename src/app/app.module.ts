@@ -22,6 +22,8 @@ import { ServiceComponent } from './afterLogin/service/service.component';
 import { AboutComponent } from './afterLogin/about/about.component';
 import { ContactComponent } from './afterLogin/contact/contact.component';
 import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-foun
     ServiceComponent,
     AboutComponent,
     ContactComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

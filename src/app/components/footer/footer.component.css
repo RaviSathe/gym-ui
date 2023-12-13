@@ -1,0 +1,118 @@
+.box{
+    background: black;
+}
+.footer{
+    background: black;
+    /* position: absolute;
+    bottom: 0; */
+    z-index: 999;
+    height: 300px;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 90px;
+}
+
+.footer .logo-links h2{
+    margin: 20px 10px;
+    color: red;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.footer .logo-links h2 span{
+    color: white;
+    cursor: pointer;
+}
+
+.footer .logo-links a{
+    margin: 30px 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.support h4{
+    color: grey;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.support p{
+    margin-top: 5px;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.support p:hover{
+    text-decoration: underline;
+}
+
+.features h4{
+    color: grey;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.features p{
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.features p:hover{
+    text-decoration: underline;
+}
+
+.contact-form .form{
+    margin-top: 20px;
+}
+
+.contact-form .form input{
+    padding: 10px 30px;
+    background: transparent;
+    border: none;
+    margin-bottom: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.contact-form .form button{
+    padding: 10px 35px;
+    margin-top: 5px;
+    background:linear-gradient(red,rgb(65, 64, 64));
+    color: white;
+    border: none;
+    margin-left: 30px;
+    transition: 0.4s;
+}
+
+.contact-form .form button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.copyright{
+    color: rgb(197, 188, 188);
+    padding: 10px;
+    /* margin: auto; */
+    text-align: center;
+    background-color: grey;
+}
+
+/* ---------Responsive --------------------------- */
+
+@media(max-width:900px){
+
+    .footer{
+        flex-wrap: wrap;
+        height: 500px;
+    }
+}
+
+/* -----------------Responsive for small screen i.e 350px below------------------- */
+
+@media(max-width:350px){
+    .footer{
+        display: flex;
+        flex-direction: column;
+        /* padding-left: 50px; */
+    }
+}
