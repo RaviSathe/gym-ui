@@ -13,10 +13,12 @@ export class LoginRegistrationComponent {
 
   constructor(private _ser:LoginRegistrationService , private router:Router){}
 
-  loginPage:boolean = false;
+  loginPage:boolean = true;
   registrationForm!:FormGroup;
   loginForm!:FormGroup;
   userName:string=''
+  loginDetails:any
+  OTP:number=0
 
   // @Output() userName = new EventEmitter<any>
 
@@ -45,8 +47,35 @@ export class LoginRegistrationComponent {
     })
   }
 
+  adminObj = [
+    {email:'ravi', password:'ravi9867'}
+  ]
+
+  randomNumberForOTP(digit:number){
+    let num = '1234567890'
+    let otp = ''
+    for (let i = 1; i <= digit; i++) {
+      otp += num[Math.floor(Math.random()*10)]
+      this.OTP = Number.parseInt(otp)
+    }
+    console.log('inside method ' + otp);
+  }
+
+  
+  
   onLogin(){
-    console.log("Login Works");
+    this.randomNumberForOTP(4)
+    this.loginDetails = this.loginForm.value
+    if(this.loginDetails.email === 'admin' && this.loginDetails.password === 'admin123'){
+      let num = 0
+      if(num === this.OTP){
+        alert("Welcome Admin...")
+        this.router.navigate(['adminLogin'])
+      }else{
+        alert("Invalid Credentials...")
+        return
+      }
+    }
     this._ser.login(this.loginForm.value).subscribe((res)=>{
       // console.log(res);
       this._ser.userLoggedIn = true

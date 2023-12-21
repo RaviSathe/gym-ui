@@ -1,6 +1,7 @@
 <div class="box">
     <div class="form">
         <form *ngIf="!loginPage" [formGroup]="registrationForm" (onsubmit)="onRegistration()">
+            <h1>Registration</h1>
             <input type="text" placeholder="Enter First Name" formControlName="firstName"><br>
             <input type="text" placeholder="Enter Last Name" formControlName="lastName"><br>
             <input type="number" placeholder="Enter age" formControlName="age"><br>
@@ -8,17 +9,19 @@
             <input type="number" placeholder="Enter Mobile Number" formControlName="mobileNo"><br>
             <input type="password" placeholder="Enter Password" formControlName="password"><br>
             <!-- <input type="password" placeholder="Enter Password" formControlName="confirmPassword"><br> -->
-            <button (click)="onRegistration()">Submit</button><br>
+            <button [disabled]="registrationForm.invalid" (click)="onRegistration()">Submit</button><br>
             <a (click)="switchTab()">Already Have account ? </a>
         </form>
     
         <form *ngIf="loginPage" [formGroup]="loginForm">
+            <h1>Log in</h1>
             <input type="email" placeholder="Enter Email" formControlName="email"><br>
             <input type="password" placeholder="Enter Password" formControlName="password"><br>
             <button (click)="onLogin()">Submit</button><br>
             <a (click)="switchTab()">Dont Have account Register ! </a>
         </form>
     </div>
+    <button (click)="randomNumberForOTP(4)">Get Random Number</button>
 </div>
 
 <button (click)="getAllUser()">GetAllUsers</button>

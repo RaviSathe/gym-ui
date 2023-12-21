@@ -18,10 +18,12 @@ import { ContactComponent } from './afterLogin/contact/contact.component';
 import { AboutComponent } from './afterLogin/about/about.component';
 import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
 import { authGuard } from './afterLogin/guard/auth.guard';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'landing-page', pathMatch:'full'},
   {path:'landing-page',component:LandingPageComponent},
+  {path:'adminLogin',component:AdminLoginComponent},
   {path:'register-login',component:LoginRegistrationComponent},
   {path:'home',component:HomeComponent},
   {path:'service',component:ServiceComponent},

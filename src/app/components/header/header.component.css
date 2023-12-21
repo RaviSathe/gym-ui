@@ -27,7 +27,8 @@
 .section1{
     display: flex;
     justify-content: space-around;
-    background: black;
+    /* background: black; */
+    background: #303036;
     /* margin-bottom: 10px; */
 }
 

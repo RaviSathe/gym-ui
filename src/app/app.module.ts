@@ -24,6 +24,7 @@ import { ContactComponent } from './afterLogin/contact/contact.component';
 import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ContactComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
