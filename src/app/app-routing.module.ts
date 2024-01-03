@@ -19,6 +19,7 @@ import { AboutComponent } from './afterLogin/about/about.component';
 import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
 import { authGuard } from './afterLogin/guard/auth.guard';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { SellerModule } from './seller/seller.module';
 
 const routes: Routes = [
   {path:'', redirectTo:'landing-page', pathMatch:'full'},
@@ -39,11 +40,14 @@ const routes: Routes = [
   {path:'protine',component:ProtineComponent,canActivate:[authGuard]},
   {path:'protine-cafe',component:ProtineCafeComponent,canActivate:[authGuard]},
   {path:'sports-ware',component:SportsWareComponent,canActivate:[authGuard]},
+ 
+
   {path:'**',component:PageNotFoundComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),
+  SellerModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

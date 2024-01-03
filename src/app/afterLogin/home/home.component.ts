@@ -43,43 +43,105 @@ export class HomeComponent implements AfterViewInit{
     }
   }
 
-  knowMore(requirement:any){
-    if(this._loginService.userLoggedIn === true){
-      if(requirement === 'gym'){
-        console.log("gym");
-        this.router.navigate(['gyms'])
-      }else if(requirement === 'protine'){
-        console.log("protine");
-        this.router.navigate(['protine'])
-      }else if(requirement === 'diet-plan'){
-        console.log("diet-plan");
-        this.router.navigate(['diet-plan'])
-      }else if(requirement === 'gym-equipment'){
-        console.log("gym-equipment");
-        this.router.navigate(['gym-equipment'])
-      }else if(requirement === 'gym-requiremnet'){
-        console.log("gym-requiremnet");
-        this.router.navigate(['gym-requiremnet'])
-      }else if(requirement === 'house-keeping'){
-        console.log("house-keeping");
-        this.router.navigate(['house-keeping'])
-      }else if(requirement === 'machine-repair'){
-        console.log("machine-repair");
-        this.router.navigate(['machine-repair'])
-      }else if(requirement === 'personal-trainer'){
-        console.log("personal-trainer");
-        this.router.navigate(['personal-trainer'])
-      }else if(requirement === 'protine-cafe'){
-        console.log("protine-cafe");
-        this.router.navigate(['protine-cafe'])
-      }else if(requirement === 'sports-ware'){
-        console.log("sports-ware");
-        this.router.navigate(['sports-ware'])
+
+  // ---------------functions---------------
+
+  getMoreGyms(){
+    if(localStorage.getItem('user')){
+      console.log("gym");
+      this.router.navigate(['gyms'])
+    }else{
+        this.router.navigate(['register-login'])
       }
-  }else{
-    this.router.navigate(['register-login'])
   }
+
+  getMoreProtines(){
+    if(localStorage.getItem('user')){
+    console.log("protine");
+    this.router.navigate(['protine'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
   }
+
+  getMoreGymEquipment(){
+    if(localStorage.getItem('user')){
+    console.log("gym-equipment");
+    this.router.navigate(['gym-equipment'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
+  }
+
+  getHouseKeeping(){
+    if(localStorage.getItem('user')){
+    console.log("house-keeping");
+    this.router.navigate(['house-keeping'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
+  }
+
+  getMorePersonlTrainer(){
+    if(localStorage.getItem('user')){
+    console.log("protine-cafe");
+    this.router.navigate(['protine-cafe'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
+  }
+
+  getMoreDietPlan(){
+    if(localStorage.getItem('user')){
+    console.log("diet-plan");
+    this.router.navigate(['diet-plan'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
+  }
+
+  gymRequirements(){
+    if(localStorage.getItem('user')){
+    console.log("gym-requiremnet");
+    this.router.navigate(['gym-requiremnet'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
+  }
+
+  machineRepair(){
+    if(localStorage.getItem('user')){
+    console.log("machine-repair");
+    this.router.navigate(['machine-repair'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
+  }
+
+  protineCafe(){
+    if(localStorage.getItem('user')){
+    console.log("protine-cafe");
+    this.router.navigate(['protine-cafe'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
+  }
+
+  sportsWare(){
+    if(localStorage.getItem('user')){
+    console.log("sports-ware");
+    this.router.navigate(['sports-ware'])
+    }else{
+      this.router.navigate(['register-login'])
+    }
+  }
+
+  commingSoone(){
+    alert("Somethings Comming Soon......")
+  }
+
+  // ---------------functions end--------------
+
 
   login(){
     this.router.navigate(['register-login'])

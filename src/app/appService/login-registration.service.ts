@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import * as CryptoJS from 'crypto-js';
 
 
@@ -15,8 +15,11 @@ export class LoginRegistrationService {
 
   loginButton:boolean = false
   userLoggedIn:boolean = false;
-  userName:any
+  // userName:any
   decryptedUser:any
+
+  userName = new Subject<any>()
+  loginButtons = new BehaviorSubject<any>(false)
 
   decryptData(){
     if(localStorage.getItem('user')){
@@ -28,15 +31,15 @@ export class LoginRegistrationService {
   }
 
   public addUser(user:any){
-    return this.http.post(this.Url,user)
+    return this.http.post('http://localhost:9090/user/register',user)
   }
 
   public findAll(): Observable<any> {
-    return this.http.get<any>(this.Url);
+    return this.http.get<any>('http://localhost:9090/user/getAllUser');
   }
 
   public login(data:any){
-    return this.http.post('http://localhost:9090/login',data)
+    return this.http.post('http://localhost:9090/user/login',data)
   }
 
 }

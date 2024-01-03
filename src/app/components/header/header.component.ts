@@ -12,19 +12,31 @@ export class HeaderComponent {
 
   loginButton:boolean = false
   userName:any
+  firstName:any
+  lastName:any
   // decryptedUser:any
 
   constructor(private router:Router, private _loginService: LoginRegistrationService){
     this.loginButton = this._loginService.loginButton
+    this._loginService.userName.subscribe((res)=>{
+      this.userName = res
+    })
+    this._loginService.loginButtons.subscribe((res)=>{
+      this.loginButton = res
+    })
   }
 
   ngOnInit(){
     // this.decryptData()
-    if(this._loginService.userLoggedIn === true || localStorage.getItem("user")){
-      this.loginButton = true
+    if(localStorage.getItem("user")){
+      // this.loginButton = true
+      this._loginService.loginButtons.next(true)
       this._loginService.userLoggedIn = true
       this._loginService.decryptData()
-      this.userName = this._loginService.decryptedUser.firstName
+      this.firstName = this._loginService.decryptedUser.firstName
+      this.lastName = this._loginService.decryptedUser.lastName
+      this.userName = this.firstName.charAt(0) + this.lastName.charAt(0)
+      // this._loginService.userName.next(this.userName)
       //  = this.decryptedUser.firstName
     }
   }
@@ -48,7 +60,9 @@ export class HeaderComponent {
       localStorage.clear()
       this._loginService.userLoggedIn = false
       this.loginButton = false
+      this._loginService.loginButtons.next(false)
       this.router.navigate(['register-login'])
+      localStorage.removeItem('user')
     };
   }
 

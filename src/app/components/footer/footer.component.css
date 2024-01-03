@@ -11,7 +11,7 @@
     color: white;
     display: flex;
     justify-content: space-evenly;
-    padding-top: 90px;
+    padding-top: 40px;
 }
 
 .footer .logo-links h2{
@@ -38,7 +38,7 @@
     cursor: pointer;
 }
 .support p{
-    margin-top: 5px;
+    margin: 5px 0;
     cursor: pointer;
     transition: 0.8s;
 }
@@ -53,7 +53,7 @@
     cursor: pointer;
 }
 .features p{
-    margin-top: 5px;
+    margin: 5px 0;
     cursor: pointer;
 }
 

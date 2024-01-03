@@ -1,0 +1,112 @@
+<div class="sellerLogin">
+    <!-- <div class="form"> -->
+        <div class="box">
+            <div class="form">
+                <h1 *ngIf="!loginPage"><marquee behavior="" direction="">Become a Seller</marquee></h1>
+                <h1 *ngIf="loginPage"><marquee behavior="" direction="">Welcome Seller</marquee></h1>
+                <form *ngIf="!loginPage" [formGroup]="registrationForm" (onsubmit)="onRegistration()"  class="example-form">
+                    <h3>Registration</h3>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>First Name</mat-label>
+                        <input matInput placeholder="Albert" formControlName="firstName">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput placeholder="dex" formControlName="lastName">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Age</mat-label>
+                        <input type="number" matInput placeholder="age" formControlName="age">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput placeholder="abc@mail.com" id="email" formControlName="email">
+                      </mat-form-field>
+                      <!-- <div *ngIf="registrationForm.get('email').hasError('pattern')">
+                        Please enter a valid email address.
+                      </div> -->
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Mobile Number</mat-label>
+                        <input type="number" matInput placeholder="1234567890" formControlName="mobileNo">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput placeholder="********" formControlName="password">
+                      </mat-form-field><br>
+                      <div class="btn-link">
+                        <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-outline-info" (click)="onRegistration()">Register</button>
+                        <a (click)="switchTab()">Already Have account ? </a>
+                      </div>
+                </form>
+            
+                <form *ngIf="loginPage" [formGroup]="loginForm" class="example-form">
+                    <h1>Log in</h1>
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="abc@mail.com" formControlName="email">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="********" formControlName="password">
+                      </mat-form-field><br>
+                      <div class="btn-link">
+                        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-outline-info" (click)="onLogin()">Submit</button>
+                        <a (click)="switchTab()">Dont Have account Register ! </a>
+                      </div>
+                      </form>
+            <!-- </div> -->
+        </div>
+        <button (click)="getAllSeller()">GetAllSeller</button>
+
+<!-- 
+        
+<h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form [formGroup]="registrationForm">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" placeholder="Name" formControlName="firstName"/>
+			<input type="email" placeholder="Email" formControlName="lastName"/>
+			<input type="number" placeholder="Age" formControlName="age"/>
+			<input type="email" placeholder="Email" formControlName="email"/>
+			<input type="number" placeholder="Mobile NUmber" formControlName="mobileNo"/>
+			<input type="password" placeholder="Password" formControlName="password"/>
+			<button [disabled]="!registrationForm.valid" (click)="onRegistration()">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form [formGroup]="loginForm">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" placeholder="Email" formControlName="email"/>
+			<input type="password" placeholder="Password" formControlName="password"/>
+			<a href="#">Forgot your password?</a>
+			<button [disabled]="!loginForm.valid" (click)="onLogin()">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" (click)="signUpPage()" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" (click)="signUpPage()" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div> -->

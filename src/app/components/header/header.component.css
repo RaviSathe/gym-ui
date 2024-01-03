@@ -19,10 +19,24 @@
     border-radius: 50%;
     cursor: pointer;
     transition: 0.5s;
+    animation: logo_glow 1s infinite;
 }
 
 .logo img:hover{
     box-shadow: 0 0 20px gold;
+}
+
+@keyframes logo_glow {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+    
 }
 .section1{
     display: flex;
@@ -46,7 +60,7 @@
 .navTabs ul li:hover{
     /* background-color: white; */
     color: gold;
-    filter: drop-shadow(0 0 20px red);
+    filter: drop-shadow(0 0 20px gold);
     /* box-shadow: 0 0 20px gold; */
     transform: scale(1.2);
 }
@@ -68,7 +82,7 @@
     border:1px solid gold ;
     color: gold;
     background: white;
-    /* padding:13px 24px ; */
+    /* padding: 14px 25px; */
     transform: scale(1.1);
     cursor: pointer;
     box-shadow: 0 0 20px gold;
@@ -111,4 +125,13 @@
         display: none;
     }
 
+}
+
+
+/* -------------------second----------------- */
+
+.otherTabs{
+    height: 30px;
+    width: 100%;
+    background: black;
 }

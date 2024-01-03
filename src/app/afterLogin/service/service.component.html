@@ -1,9 +1,18 @@
-<div class="box">
-    <div class="left">
-        <h1>Hi My name is Ravi Sathe</h1>
-        <p>I'm a full time web developer</p>
-    </div>
-    <div class="right">
-        <img src="" alt="">
-    </div>
+<input type="file" (change)="onFileChanged($event)" />
+<button (click)="onUpload()">Upload Image</button>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<button (click)="getAllProduct()">Get All Product</button>
+
+<br><br><br><br>
+
+<div class="pro" *ngFor="let pro of products">
+    <img src="{{pro.productName}}" alt="" width="300px">
+    <h2>{{pro.id}}</h2>
 </div>

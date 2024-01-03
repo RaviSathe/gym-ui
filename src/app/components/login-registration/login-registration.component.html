@@ -1,28 +1,54 @@
 <div class="box">
     <div class="form">
-        <form *ngIf="!loginPage" [formGroup]="registrationForm" (onsubmit)="onRegistration()">
+        <form *ngIf="!loginPage" [formGroup]="registrationForm" (onsubmit)="onRegistration()"  class="example-form">
             <h1>Registration</h1>
-            <input type="text" placeholder="Enter First Name" formControlName="firstName"><br>
-            <input type="text" placeholder="Enter Last Name" formControlName="lastName"><br>
-            <input type="number" placeholder="Enter age" formControlName="age"><br>
-            <input type="email" placeholder="Enter Email" formControlName="email"><br>
-            <input type="number" placeholder="Enter Mobile Number" formControlName="mobileNo"><br>
-            <input type="password" placeholder="Enter Password" formControlName="password"><br>
-            <!-- <input type="password" placeholder="Enter Password" formControlName="confirmPassword"><br> -->
-            <button [disabled]="registrationForm.invalid" (click)="onRegistration()">Submit</button><br>
-            <a (click)="switchTab()">Already Have account ? </a>
+            <mat-form-field class="example-full-width">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Albert" formControlName="firstName">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="dex" formControlName="lastName">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Age</mat-label>
+                <input type="number" matInput placeholder="age" formControlName="age">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="abc@mail.com" id="email" formControlName="email">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Mobile Number</mat-label>
+                <input type="number" matInput placeholder="1234567890" formControlName="mobileNo">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="********" formControlName="password">
+              </mat-form-field><br>
+              <div class="btn-link">
+                <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-outline-info" (click)="onRegistration()">Register</button>
+                <a (click)="switchTab()">Already Have account ? </a>
+              </div>
         </form>
     
-        <form *ngIf="loginPage" [formGroup]="loginForm">
+        <form *ngIf="loginPage" [formGroup]="loginForm" class="example-form">
             <h1>Log in</h1>
-            <input type="email" placeholder="Enter Email" formControlName="email"><br>
-            <input type="password" placeholder="Enter Password" formControlName="password"><br>
-            <button (click)="onLogin()">Submit</button><br>
-            <a (click)="switchTab()">Dont Have account Register ! </a>
-        </form>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="abc@mail.com" formControlName="email">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="********" formControlName="password">
+              </mat-form-field><br>
+              <div class="btn-link">
+                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-outline-info" (click)="onLogin()">Submit</button>
+                <a (click)="switchTab()">Dont Have account Register ! </a>
+              </div>
+              </form>
     </div>
-    <button (click)="randomNumberForOTP(4)">Get Random Number</button>
-</div>
-
-<button (click)="getAllUser()">GetAllUsers</button>
-
+  </div>
+  
+  <button (click)="getAllUser()">GetAllUsers</button>
+ 

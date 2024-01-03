@@ -11,7 +11,9 @@
     cursor: pointer;
     color: white;
     background-color: #303036;
+    /* background: rgba(255, 255, 255, 0.159); */
     border-radius: 10px;
+    /* backdrop-filter: blur(2px); */
     /* background: transparent; */
     /* filter: brightness(110%); */
 }
@@ -50,6 +52,7 @@
 }
 .item img:hover{
     height: 400px;
+    width: 100%;
     transform: scale(1.1);
 }
 
@@ -59,18 +62,18 @@
 
 .item h2{
     color: gold;
-    margin: 25px;
+    margin: 20px 0;
     font-weight: bold;
     position: absolute;
-    bottom: 140px;
-    left: 90px;
+    bottom: 150px;
+    left: 78px;
 }
 
 .item p{
     font-size: 18px;
     margin-bottom: 5px;
     position: absolute;
-    bottom: 65px;
+    bottom: 59px;
 }
 
 .item button{
