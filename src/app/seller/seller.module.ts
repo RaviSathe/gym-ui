@@ -5,6 +5,7 @@ import { SellerLoginComponent } from './seller-login/seller-login.component';
 import { SellerDashBoardComponent } from './seller-dash-board/seller-dash-board.component';
 import { authGuard } from '../afterLogin/guard/auth.guard';
 import { AddProductComponent } from './add-product/add-product.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {path:'seller-login',component:SellerLoginComponent},
@@ -14,7 +15,9 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HomePageComponent
+  ],
   imports: [RouterModule.forChild(routes),CommonModule],
   exports: [RouterModule]
 })

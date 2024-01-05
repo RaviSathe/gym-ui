@@ -10,7 +10,7 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./seller-login.component.css']
 })
 export class SellerLoginComponent implements AfterViewInit{
-
+  
   constructor(private sellerService_:SellerService, private router: Router){
     this.sellerService_.getAllSeller().subscribe((res)=>{
       this.allSellers = res
@@ -19,14 +19,19 @@ export class SellerLoginComponent implements AfterViewInit{
   ngAfterViewInit(): void {
     // console.log(this.allSellers);
   }
-
+  
+  emailIdExist: any;
   loginForm!:FormGroup
   registrationForm!:FormGroup
   loginPage:boolean = true;
   allSellers:any;
-  emailExist:boolean = false
+  // emailExist:boolean = false
 
   ngOnInit(){
+    if(localStorage.getItem('seller')){
+      this.router.navigate(['dashboard'])
+    }
+
     const emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
     this.loginForm = new FormGroup({
@@ -55,28 +60,21 @@ export class SellerLoginComponent implements AfterViewInit{
       let data = res;
       const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data),'data_key').toString();
       localStorage.setItem('seller',encryptedData)
-      this.router.navigate(['seller-addProduct'])
+      this.router.navigate(['./dashboard'])
     })
   }
 
   onRegistration(){
-    for (let i = 0; i < this.allSellers.length; i++) {
-      if(this.allSellers[i].email === this.registrationForm.value.email){
-        this.emailExist = true
-        break
-      }
-    }
-    if(!this.emailExist){
+    this.checkEmailExistOrNot(this.registrationForm.value.email);
+    if(this.emailIdExist === null){
       this.sellerService_.registerSeller(this.registrationForm.value).subscribe((res)=>{
         console.log(res);
         alert("Seller Registration Successfull...")
         this.loginPage = true
       })
     }else{
-      alert("Email id Already exist...")
+      alert("Email id Already Exist")
     }
-      
-    
   }
 
   switchTab(){
@@ -89,13 +87,17 @@ export class SellerLoginComponent implements AfterViewInit{
       this.allSellers.forEach((el:any)=>{
           console.log(el);  
       })
+    })
+  }
 
-      // for (let i = 0; i < this.allSellers.length; i++) {
-      //   if(this.allSellers[i].email === this.registrationForm.value.email){
-      //     this.userExist = true
-      //   }
-      // }
-      
+  checkEmailExistOrNot(emailId:any){
+    this.sellerService_.emailAlreadyExist(emailId).subscribe((res)=>{
+      if(res != null){
+        this.emailIdExist = res;
+        console.log(res);
+      }else{
+        alert("User does not exist")
+      }
     })
   }
 

@@ -20,10 +20,14 @@ export class LoginRegistrationComponent {
   userName: string = ''
   loginDetails: any
   OTP: number = 0
+  emailIdExist:any;
 
   // @Output() userName = new EventEmitter<any>
 
   ngOnInit() {
+    if(localStorage.getItem('user')){
+      this.router.navigate(['home'])
+    }
     const emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     this.registrationForm = new FormGroup({
       'firstName': new FormControl('', [Validators.required]),
@@ -43,13 +47,20 @@ export class LoginRegistrationComponent {
 
 
   onRegistration() {
-    this._ser.addUser(this.registrationForm.value).subscribe((res) => {
-      console.log(res);
-      if(res != null){
-
-        this.loginPage = true
-      }
-    })
+    this.checkEmailExistOrNot(this.registrationForm.value.email);
+    if(this.emailIdExist === null){
+      this._ser.addUser(this.registrationForm.value).subscribe((res) => {
+        console.log(res);
+        if(res != null){
+          this.loginPage = true
+        }else{
+          console.log("Something went wrong");
+        }
+      })
+    }else{
+      alert("Email Id Already Exist");
+      
+    }
   }
 
   adminObj = [
@@ -101,6 +112,17 @@ export class LoginRegistrationComponent {
   getAllUser() {
     this._ser.findAll().subscribe((res) => {
       console.log(res);
+    })
+  }
+
+  checkEmailExistOrNot(emailId:any){
+    this._ser.emailAlreadyExist(emailId).subscribe((res)=>{
+      if(res != null){
+        this.emailIdExist = res;
+        console.log(res);
+      }else{
+        alert("User does not exist")
+      }
     })
   }
 

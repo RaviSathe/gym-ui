@@ -42,4 +42,8 @@ export class LoginRegistrationService {
     return this.http.post('http://localhost:9090/user/login',data)
   }
 
+  public emailAlreadyExist(emailId:any){
+    return this.http.get(`http://localhost:9090/user/emailExist/${emailId}`)
+  }
+
 }

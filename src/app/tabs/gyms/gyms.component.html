@@ -1,18 +1,16 @@
-<div class="box">
-    <div class="first">
-        <h1>Gyms</h1>
-    </div>
-</div>
 <div class="box2">
     <div class="gyms" *ngFor="let gym of gyms">
         <div class="img">
             <img src="{{gym.image}}" alt="">
         </div>
         <div class="name">
-            <h2>{{gym.name}}</h2>
+            <h3>{{gym.productName}}</h3>
         </div>
-        <div class="btn">
-            <button>See Facilities</button>
+        <div class="description">
+            <h2>{{gym.description}}</h2>
+        </div>
+        <div class="btn-n">
+            <button type="button" class="btn btn-outline-info">See Facilities</button>
         </div>
     </div>
 </div>

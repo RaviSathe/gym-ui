@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js'
 
 
@@ -10,7 +11,7 @@ import * as CryptoJS from 'crypto-js'
 export class SellerDashBoardComponent {
  decryptedUser: any;
 
- constructor(){}
+ constructor(private router:Router){}
 
  ngOnInit(){
   this.decryptData()
@@ -24,6 +25,11 @@ export class SellerDashBoardComponent {
       this.decryptedUser = JSON.parse(decryptedWord.toString(CryptoJS.enc.Utf8))
       // console.log(this.decryptedUser);
     }
+  }
+
+  logOut(){
+    localStorage.removeItem('seller')
+    this.router.navigate(['seller-login'])
   }
 
 }

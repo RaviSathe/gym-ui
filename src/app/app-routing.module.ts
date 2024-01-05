@@ -20,16 +20,30 @@ import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-foun
 import { authGuard } from './afterLogin/guard/auth.guard';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { SellerModule } from './seller/seller.module';
+import { SellerLoginComponent } from './seller/seller-login/seller-login.component';
+import { SellerDashBoardComponent } from './seller/seller-dash-board/seller-dash-board.component';
+import { AddProductComponent } from './seller/add-product/add-product.component';
+import { GofitComponent } from './components/gofit/gofit.component';
+import { HomePageComponent } from './seller/home-page/home-page.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'landing-page', pathMatch:'full'},
-  {path:'landing-page',component:LandingPageComponent},
-  {path:'adminLogin',component:AdminLoginComponent},
-  {path:'register-login',component:LoginRegistrationComponent},
-  {path:'home',component:HomeComponent},
-  {path:'service',component:ServiceComponent},
-  {path:'contact-us',component:ContactComponent},
-  {path:'about',component:AboutComponent},
+  // {path:'', redirectTo:'landing-page', pathMatch:'full'},
+  {path:'', component:LandingPageComponent , children:[
+    {path:'',component:GofitComponent},
+    {path:'home',component:HomeComponent},
+    {path:'service',component:ServiceComponent},
+    {path:'contact-us',component:ContactComponent},
+    {path:'about',component:AboutComponent},
+    {path:'register-login',component:LoginRegistrationComponent},
+  ]},
+
+  {path:'',component:HomePageComponent,canActivate:[authGuard],children:[
+    {path:'seller-login',component:SellerLoginComponent},
+    {path:'dashboard',component:SellerDashBoardComponent},
+    {path:'addProduct',component:AddProductComponent,canActivate:[authGuard]},
+  ]},
+
+  {path:'adminDashboard',component:AdminLoginComponent},
   {path:'gyms',component:GymsComponent,canActivate:[authGuard]},
   {path:'diet-plan',component:DietPlanComponent,canActivate:[authGuard]},
   {path:'gym-equipment',component:GymEquipmentComponent,canActivate:[authGuard]},
@@ -41,13 +55,11 @@ const routes: Routes = [
   {path:'protine-cafe',component:ProtineCafeComponent,canActivate:[authGuard]},
   {path:'sports-ware',component:SportsWareComponent,canActivate:[authGuard]},
  
-
   {path:'**',component:PageNotFoundComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),
-  SellerModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

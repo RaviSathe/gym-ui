@@ -47,6 +47,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ProductsComponent } from './seller/products/products.component';
 import { AddProductComponent } from './seller/add-product/add-product.component';
 import { SellerModule } from './seller/seller.module';
+import { GofitComponent } from './components/gofit/gofit.component';
+
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,8 @@ import { SellerModule } from './seller/seller.module';
     SellerLoginComponent,
     SellerDashBoardComponent,
     ProductsComponent,
-    AddProductComponent
+    AddProductComponent,
+    GofitComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,8 @@ import { SellerModule } from './seller/seller.module';
     MatButtonModule,
     MatSidenavModule,
     MatSelectModule,
-    SellerModule
+    SellerModule,
+    ModalModule.forRoot()
   ],
   providers: [
     provideAnimations(), // required animations providers

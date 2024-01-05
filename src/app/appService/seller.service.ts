@@ -22,4 +22,17 @@ export class SellerService {
     return this.http.post('http://localhost:9090/seller/login',sellerLogin)
   }
 
+  public emailAlreadyExist(emailId:any){
+    return this.http.get(`http://localhost:9090/seller/emailExist/${emailId}`)
+  }
+
+  public addProductOnPage(productDetails:any){
+    return this.http.post('http://localhost:9090/product/addProduct',productDetails)
+  }
+
+  public getAllProduct(){
+    return this.http.get('http://localhost:9090/product/getAllProducts')
+  }
+
+
 }

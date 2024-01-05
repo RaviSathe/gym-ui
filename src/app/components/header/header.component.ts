@@ -36,8 +36,6 @@ export class HeaderComponent {
       this.firstName = this._loginService.decryptedUser.firstName
       this.lastName = this._loginService.decryptedUser.lastName
       this.userName = this.firstName.charAt(0) + this.lastName.charAt(0)
-      // this._loginService.userName.next(this.userName)
-      //  = this.decryptedUser.firstName
     }
   }
 

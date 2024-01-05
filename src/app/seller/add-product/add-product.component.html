@@ -1,1 +1,110 @@
-<p>add-product works!</p>
+
+
+<div class="container" *ngIf="productDetailPage">
+    <form [formGroup]="productListingForm">
+      <div class="row">
+        <div class="col-25">
+          <label for="pname">Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" minlength="4" maxlength="22" id="pname" name="firstname" placeholder="Product Name" formControlName="productName">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="useOfProduct">Use of Product</label>
+        </div>
+        <div class="col-75">
+          <select id="useOfProduct" name="useOfProduct" formControlName="category" formControlName="useOfProduct">
+            <option value="add-a-shop">Add a Shop</option>
+            <option value="list-to-purchase">List to purchase</option>
+          </select>
+        </div>
+      </div><div class="row">
+        <div class="col-25">
+          <label for="image">Image</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="image" name="lastname" placeholder="Use of Product" formControlName="image">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="category">Category</label>
+        </div>
+        <div class="col-75">
+          <select id="country" name="category" formControlName="category">
+            <option value="gym">Gym</option>
+            <option value="protine">Protine</option>
+            <option value="gym-equipments">Gym Equipments</option>
+            <option value="house-keeping">House Keeping</option>
+            <option value="personal-trainer">Personal Trainer</option>
+            <option value="diet-plan">Diet Plan</option>
+            <option value="gy-requirement">Gym Requirement</option>
+            <option value="machine-repair">Machine Repair</option>
+            <option value="protine-cafe">Protine Cafe</option>
+            <option value="sportware">Sports Ware</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="description">Description</label>
+        </div>
+        <div class="col-75">
+          <textarea id="description" name="description" placeholder="Write something.." style="height:200px" formControlName="description"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <button [disabled]="productListingForm.invalid" (click)="addProduct()" type="submit" value="Submit">Add Product</button>
+      </div>
+    </form>
+  </div>
+
+
+  <button type="button" *ngIf="!productDetailPage" class="btn btn-primary" (click)="openModal(template)">Become a Member</button>
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Conformation Page</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <main>
+      <h1>Terms and Conditions</h1>
+  
+      <div class="section">
+        <h2>Introduction</h2>
+        <p>Insert introductory content explaining the purpose of the terms and conditions.</p>
+      </div>
+  
+      <div class="section">
+        <h2>Usage</h2>
+        <p>Describe how users should use your gym's services, facilities, and website.</p>
+      </div>
+  
+      <div class="section">
+        <h2>Liabilities</h2>
+        <p>Explain any liabilities, disclaimers, or responsibilities related to using your gym.</p>
+      </div>
+  
+      <!-- Add more sections to cover various terms and conditions -->
+  
+      <div class="section checkbox-container">
+        <input type="checkbox" id="agreeCheckbox" #check>
+        <label for="agreeCheckbox" class="checkbox-label">I agree to the terms and conditions</label>
+        <button [disabled]="!check.checked" (click)="productForm()">Get Started</button>
+      </div>
+    </main>
+  
+    <footer>
+      <p>&copy; 2024 Your Gym Name. All rights reserved.</p>
+    </footer>
+  </div>
+</ng-template>
+
+
+<button (click)="getAllProduct()">getAllProduct</button>

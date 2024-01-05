@@ -11,7 +11,8 @@ export const authGuard: CanActivateFn = (route, state) => {
   const userSer_ = inject(LoginRegistrationService);
 
 
-  if((localStorage.getItem('user') && userSer_.userLoggedIn === true) || (localStorage.getItem('seller') && sellerSer_.sellerLoggedIn === true)){
+  // if((localStorage.getItem('user') && userSer_.userLoggedIn === true) || (localStorage.getItem('seller') && sellerSer_.sellerLoggedIn === true)){
+    if(localStorage.getItem('user') || localStorage.getItem('seller')){
     return true
   }else{
     alert("Access Denied")
