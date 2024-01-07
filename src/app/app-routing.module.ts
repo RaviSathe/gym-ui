@@ -35,25 +35,25 @@ const routes: Routes = [
     {path:'contact-us',component:ContactComponent},
     {path:'about',component:AboutComponent},
     {path:'register-login',component:LoginRegistrationComponent},
+    {path:'gyms',component:GymsComponent,canActivate:[authGuard]},
+    {path:'diet-plan',component:DietPlanComponent,canActivate:[authGuard]},
+    {path:'gym-equipment',component:GymEquipmentComponent,canActivate:[authGuard]},
+    {path:'gym-requiremnet',component:GymRequirementComponent,canActivate:[authGuard]},
+    {path:'house-keeping',component:HouseKeepingComponent,canActivate:[authGuard]},
+    {path:'machine-repair',component:MachineRepairComponent,canActivate:[authGuard]},
+    {path:'personal-trainer',component:PersonalTrainerComponent,canActivate:[authGuard]},
+    {path:'protine',component:ProtineComponent,canActivate:[authGuard]},
+    {path:'protine-cafe',component:ProtineCafeComponent,canActivate:[authGuard]},
+    {path:'sports-ware',component:SportsWareComponent,canActivate:[authGuard]},
   ]},
 
-  {path:'',component:HomePageComponent,canActivate:[authGuard],children:[
+  {path:'',component:HomePageComponent,children:[
     {path:'seller-login',component:SellerLoginComponent},
     {path:'dashboard',component:SellerDashBoardComponent},
     {path:'addProduct',component:AddProductComponent,canActivate:[authGuard]},
   ]},
 
   {path:'adminDashboard',component:AdminLoginComponent},
-  {path:'gyms',component:GymsComponent,canActivate:[authGuard]},
-  {path:'diet-plan',component:DietPlanComponent,canActivate:[authGuard]},
-  {path:'gym-equipment',component:GymEquipmentComponent,canActivate:[authGuard]},
-  {path:'gym-requiremnet',component:GymRequirementComponent,canActivate:[authGuard]},
-  {path:'house-keeping',component:HouseKeepingComponent,canActivate:[authGuard]},
-  {path:'machine-repair',component:MachineRepairComponent,canActivate:[authGuard]},
-  {path:'personal-trainer',component:PersonalTrainerComponent,canActivate:[authGuard]},
-  {path:'protine',component:ProtineComponent,canActivate:[authGuard]},
-  {path:'protine-cafe',component:ProtineCafeComponent,canActivate:[authGuard]},
-  {path:'sports-ware',component:SportsWareComponent,canActivate:[authGuard]},
  
   {path:'**',component:PageNotFoundComponent},
 ];

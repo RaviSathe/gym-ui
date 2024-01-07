@@ -4,7 +4,8 @@
         <img src="/assets/logo.png" alt="" width="70px" routerLink="/">
     </div>
     <div class="navTabs">
-        <ul>
+        <h1 *ngIf="!loginButton">Welcome to GoFit</h1>
+        <ul *ngIf="loginButton">
             <li routerLink="./home" routerLinkActive="active">Home</li>
             <li>Shops</li>
             <li routerLink="./service">Service</li>

@@ -15,18 +15,15 @@ export class LoginRegistrationService {
 
   loginButton:boolean = false
   userLoggedIn:boolean = false;
-  // userName:any
   decryptedUser:any
-
-  userName = new Subject<any>()
-  loginButtons = new BehaviorSubject<any>(false)
+  // userName = new BehaviorSubject('')
+  loginButtons = new BehaviorSubject(false)
 
   decryptData(){
     if(localStorage.getItem('user')){
       const eText = localStorage.getItem('user') || '';
       const decryptedWord = CryptoJS.AES.decrypt(eText , 'data_key')
       this.decryptedUser = JSON.parse(decryptedWord.toString(CryptoJS.enc.Utf8))
-      console.log(this.decryptedUser);
     }
   }
 

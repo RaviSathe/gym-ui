@@ -24,7 +24,7 @@ export class AddProductComponent {
     }
 
     this.productListingForm = new FormGroup({
-      'productName' : new FormControl('',Validators.required),
+      'name' : new FormControl('',Validators.required),
       'useOfProduct' : new FormControl('',Validators.required),
       'image' : new FormControl(''),
       'category' : new FormControl('',Validators.required),

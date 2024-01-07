@@ -22,7 +22,6 @@ import { ServiceComponent } from './afterLogin/service/service.component';
 import { AboutComponent } from './afterLogin/about/about.component';
 import { ContactComponent } from './afterLogin/contact/contact.component';
 import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
@@ -51,6 +50,8 @@ import { GofitComponent } from './components/gofit/gofit.component';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AboutComponent,
     ContactComponent,
     PageNotFoundComponent,
-    HeaderComponent,
     FooterComponent,
     AdminLoginComponent,
     SellerLoginComponent,
@@ -95,7 +95,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     MatSidenavModule,
     MatSelectModule,
     SellerModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    // Import NgxUiLoaderModule
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    })
   ],
   providers: [
     provideAnimations(), // required animations providers

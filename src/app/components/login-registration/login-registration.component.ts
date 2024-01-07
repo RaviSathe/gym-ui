@@ -1,18 +1,23 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRegistrationService } from 'src/app/appService/login-registration.service';
 import * as CryptoJS from 'crypto-js';
-import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-login-registration',
   templateUrl: './login-registration.component.html',
   styleUrls: ['./login-registration.component.css']
 })
-export class LoginRegistrationComponent {
+export class LoginRegistrationComponent implements AfterViewInit{
+  firstName: any;
+  user: any;
+  lastName: any;
 
-  constructor(private _ser: LoginRegistrationService, private router: Router, private toastr: ToastrService) { }
+  constructor(private _ser: LoginRegistrationService, private router: Router,private ngxService: NgxUiLoaderService) {
+    this.ngxService.start(); 
+   }
 
   loginPage: boolean = true;
   registrationForm!: FormGroup;
@@ -21,8 +26,8 @@ export class LoginRegistrationComponent {
   loginDetails: any
   OTP: number = 0
   emailIdExist:any;
+  d:any
 
-  // @Output() userName = new EventEmitter<any>
 
   ngOnInit() {
     if(localStorage.getItem('user')){
@@ -45,23 +50,29 @@ export class LoginRegistrationComponent {
     })
   }
 
+  ngAfterViewInit(){
+    this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
+  }
 
-  onRegistration() {
-    this.checkEmailExistOrNot(this.registrationForm.value.email);
-    if(this.emailIdExist === null){
-      this._ser.addUser(this.registrationForm.value).subscribe((res) => {
-        console.log(res);
-        if(res != null){
-          this.loginPage = true
+   onRegistration() {
+     this._ser.emailAlreadyExist(this.registrationForm.value.email).subscribe((res)=>{
+       if(res != null){
+      alert("Email Id Already Exist"); 
         }else{
-          console.log("Something went wrong");
+          this.ngxService.start();
+          this._ser.addUser(this.registrationForm.value).subscribe((res) => {
+            console.log(res);
+            if(res != null){
+              this.loginPage = true
+              this.ngxService.stop();
+            }else{
+              console.log("Something went wrong");
+            }
+          })
         }
       })
-    }else{
-      alert("Email Id Already Exist");
-      
-    }
   }
+
 
   adminObj = [
     { email: 'ravi', password: 'ravi9867' }
@@ -91,14 +102,19 @@ export class LoginRegistrationComponent {
       }
     }
 
-    this._ser.login(this.loginForm.value).subscribe((res) => {
-      console.log(res);
+    this._ser.login(this.loginForm.value).subscribe((res:any) => {
+      // console.log(res);
       if (res != null) {
         this._ser.userLoggedIn = true
         let data = res
+        this.firstName = res.firstName
+        this.lastName = res.lastName
+        this.userName = this.firstName.charAt(0) + this.lastName.charAt(0)
+        localStorage.setItem('un',this.userName)
         const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data), 'data_key').toString();
         this.router.navigate(['home'])
         localStorage.setItem("user", encryptedData)
+        this._ser.loginButtons.next(true)
       } else {
         alert("Incorrect Details")
       }
@@ -115,8 +131,9 @@ export class LoginRegistrationComponent {
     })
   }
 
+  
   checkEmailExistOrNot(emailId:any){
-    this._ser.emailAlreadyExist(emailId).subscribe((res)=>{
+    this._ser.emailAlreadyExist(emailId.value).subscribe((res)=>{
       if(res != null){
         this.emailIdExist = res;
         console.log(res);

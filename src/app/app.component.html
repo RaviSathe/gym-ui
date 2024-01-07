@@ -1,5 +1,8 @@
-<!-- <app-header></app-header> -->
+<ngx-ui-loader fgsType="three-strings" fgsColor="gold" pbColor="gold" text="Loading"></ngx-ui-loader>
 <div class="box2">
+    <div ngxUiLoaderBlurred (blur)="10">
+        <!-- This page content will be blurred/frosted when foreground loader is showed -->
+      </div>
     <router-outlet></router-outlet>      
+    <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

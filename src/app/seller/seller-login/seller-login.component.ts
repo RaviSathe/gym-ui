@@ -60,6 +60,7 @@ export class SellerLoginComponent implements AfterViewInit{
       let data = res;
       const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data),'data_key').toString();
       localStorage.setItem('seller',encryptedData)
+      this.sellerService_.sellerLogin.next(true)
       this.router.navigate(['./dashboard'])
     })
   }

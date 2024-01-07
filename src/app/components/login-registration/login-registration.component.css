@@ -1,19 +1,43 @@
+.box{
+    background: url('https://hips.hearstapps.com/hmg-prod/images/dumbbells-gym-64a3f4bc2fe31.jpg');
+    object-fit: cover;
+    background-position: center;
+}
+
+.btn-link{
+    position: relative;
+}
+
 .btn-link a{
+    position: absolute;
+    bottom: -45px;
+    right: 0px;
+    background: #fffd487a;
+    color: red;
+    padding: 10px;
+    transition: 0.4s;
     cursor: pointer;
+}
+
+.btn-link .btn-n{
+    text-align: left;
+}
+
+.btn-link a:hover{
+    filter:drop-shadow(0 0 5px red);
     text-decoration: underline;
-} 
+}
 
 .example-form {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-  }
+    background: #ffffff85; 
+}
   
-  .example-full-width {
-    width: 80%;
-  }
-
-
+.example-full-width {
+   width: 80%;
+}
 
 .form{
     text-align: center;
@@ -28,8 +52,17 @@ input::placeholder{
     color: red;
 }
 
-.btn-link{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+
+
+.btn-n{
+    color: gold;
+    padding: 10px 20px;
+    border: 1px solid gold;
+    background: white;
+    transition: 0.4s;
+    text-decoration: none;
+}
+
+.btn-n:hover{
+    box-shadow: 0 0 10px gold;
 }

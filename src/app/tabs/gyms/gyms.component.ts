@@ -11,31 +11,30 @@ export class GymsComponent {
   searchResult:any
 
   constructor(private _sellerSer:SellerService){
-    this._sellerSer.getAllProduct().subscribe((res)=>{
-      this.gymStore = res
-      // console.log('res',res);
-      this.searchResult = this.gymStore.filter((item: any)=>{
+    this._sellerSer.getAllProduct().subscribe((res:any)=>{
+      res.filter((item: any)=>{
         if(item.category === 'gym'){
-          this.searchResult = item
-          console.log(this.searchResult);
-          this.gyms.push(this.searchResult)
+          this.gyms.push(item)
         }
       })
     })
+  }
+  
+  ngOnInit(){
   }
 
 
   gyms = [
     {image:'/assets/gym-imgs/2.jpg',
-    productName:'Hello GYM',
+    name:'Hello GYM',
      description:'Hello GYM',
     },
     {image:'/assets/gym-imgs/3.jpg',
-    productName:'Hello GYM',
+    name:'Hello GYM',
      description:'Hello GYM',
     },
     {image:'/assets/gym-imgs/6.jpg',
-    productName:'Hello GYM',
+    name:'Hello GYM',
      description:'Hello GYM',
     }
    

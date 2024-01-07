@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as AOS from "aos"
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { LoginRegistrationService } from 'src/app/appService/login-registration.service';
 
 
@@ -9,41 +10,43 @@ import { LoginRegistrationService } from 'src/app/appService/login-registration.
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
-export class LandingPageComponent implements OnInit{
-
-  ngOnInit(){
-    AOS.init();
-    // this.decryptData()
-    if(localStorage.getItem("user")){
-      // this.loginButton = true
-      this._loginService.loginButtons.next(true)
-      this._loginService.userLoggedIn = true
-      this._loginService.decryptData()
-      this.firstName = this._loginService.decryptedUser.firstName
-      this.lastName = this._loginService.decryptedUser.lastName
-      this.userName = this.firstName.charAt(0) + this.lastName.charAt(0)
-    }
-  }
+export class LandingPageComponent implements OnInit, AfterViewInit{
 
   // -------header--------
   loginButton:boolean = false
   userName:any
-  firstName:any
-  lastName:any
   // -------header--------
 
   bmi:any;
   isBMI:boolean = false
 
-  constructor(private router:Router, private _loginService: LoginRegistrationService){
-    this.loginButton = this._loginService.loginButton
-    this._loginService.userName.subscribe((res)=>{
-      this.userName = res
-    })
+  
+  constructor(private router:Router, private _loginService: LoginRegistrationService,private ngxService: NgxUiLoaderService){
+    
     this._loginService.loginButtons.subscribe((res)=>{
       this.loginButton = res
     })
+    
   }
+
+  ngOnInit(){
+    AOS.init();
+    if(localStorage.getItem("user")){
+      this.loginButton = true
+      this._loginService.userLoggedIn = true
+      this._loginService.decryptData()
+      this.userName = localStorage.getItem('un')
+    }
+    // this.ngxService.start(); 
+  }
+  
+  ngAfterViewInit(){
+    // this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
+      
+  }
+
+  
+
 
   calculateBMI(age:any, gender:any, height_feet:any, height_inch:any, weight:any){
     console.log(age.value,gender.value,height_feet.value,height_inch.value,weight.value);
@@ -65,6 +68,7 @@ export class LandingPageComponent implements OnInit{
       this._loginService.loginButtons.next(false)
       this.router.navigate(['register-login'])
       localStorage.removeItem('user')
+      this._loginService.loginButtons.next(false)
     };
   }
   
