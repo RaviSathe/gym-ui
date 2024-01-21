@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginRegistrationService } from 'src/app/appService/login-registration.service';
 import * as CryptoJS from 'crypto-js';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-login-registration',
@@ -14,8 +15,10 @@ export class LoginRegistrationComponent implements AfterViewInit{
   firstName: any;
   user: any;
   lastName: any;
+  otpBox:boolean = false
 
-  constructor(private _ser: LoginRegistrationService, private router: Router,private ngxService: NgxUiLoaderService) {
+  constructor(private _ser: LoginRegistrationService, private router: Router,private ngxService: NgxUiLoaderService,
+    private datatype: DatePipe) {
     this.ngxService.start(); 
    }
 
@@ -27,9 +30,12 @@ export class LoginRegistrationComponent implements AfterViewInit{
   OTP: number = 0
   emailIdExist:any;
   d:any
+  date = new Date();
 
 
   ngOnInit() {
+    let latest_date =this.datatype.transform(this.date, 'yyyy-MM-dd');
+    
     if(localStorage.getItem('user')){
       this.router.navigate(['home'])
     }
@@ -41,7 +47,7 @@ export class LoginRegistrationComponent implements AfterViewInit{
       'age': new FormControl('', [Validators.required]),
       'mobileNo': new FormControl('', [Validators.required]),
       'password': new FormControl('', [Validators.required]),
-      // 'confirmPassword' : new FormControl(''),
+      'date' : new FormControl(latest_date),
     })
 
     this.loginForm = new FormGroup({
@@ -91,7 +97,7 @@ export class LoginRegistrationComponent implements AfterViewInit{
 
   onLogin() {
     this.randomNumberForOTP(4)
-    if (this.loginForm.value.email === 'admin@gmail.com' && this.loginForm.value.password === 'admin123') {
+    if (this.loginForm.value.email ==='gsathe705@gmail.com' && this.loginForm.value.password === 'admin123') {
       let num = 0
       if (num === this.OTP) {
         alert("Welcome Admin...")
@@ -102,8 +108,14 @@ export class LoginRegistrationComponent implements AfterViewInit{
       }
     }
 
+    // this._ser.login(this.loginForm.value).subscribe((res:any) => {
+    //   if (res != null) {
+    //     this.otpBox = true
+    //   } else {
+    //     alert("Incorrect Details")
+    //   }
+    // })
     this._ser.login(this.loginForm.value).subscribe((res:any) => {
-      // console.log(res);
       if (res != null) {
         this._ser.userLoggedIn = true
         let data = res
@@ -121,12 +133,16 @@ export class LoginRegistrationComponent implements AfterViewInit{
     })
   }
 
+  otpSubmit(otp:any){
+
+  }
+
   switchTab() {
     this.loginPage = !this.loginPage
   }
 
   getAllUser() {
-    this._ser.findAll().subscribe((res) => {
+    this._ser.getAllUsers().subscribe((res) => {
       console.log(res);
     })
   }

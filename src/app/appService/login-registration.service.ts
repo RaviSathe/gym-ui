@@ -31,7 +31,7 @@ export class LoginRegistrationService {
     return this.http.post('http://localhost:9090/user/register',user)
   }
 
-  public findAll(): Observable<any> {
+  public getAllUsers(): Observable<any> {
     return this.http.get<any>('http://localhost:9090/user/getAllUser');
   }
 
@@ -41,6 +41,30 @@ export class LoginRegistrationService {
 
   public emailAlreadyExist(emailId:any){
     return this.http.get(`http://localhost:9090/user/emailExist/${emailId}`)
+  }
+
+  public deleteUserById(id:any){
+    return this.http.delete(`http://localhost:9090/user/deleteUserById/${id}`)
+  }
+
+  public restrict_special_char(event:any) {
+    let allowed = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z0-9-_!@#$%^&*. ]/.test(allowed)) {       // only special characters defined are allowed
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
+  public space(event: any) {
+    if (event.target.selectionStart === 0 && event.code === 'Space') {
+      event.preventDefault();
+    }
+  }
+
+  public generateOTP(){
+    return this.http.get('http://localhost:9090/user/otp')
   }
 
 }

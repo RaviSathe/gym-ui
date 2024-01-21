@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,7 @@ import { AboutComponent } from './afterLogin/about/about.component';
 import { ContactComponent } from './afterLogin/contact/contact.component';
 import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -51,6 +52,13 @@ import { GofitComponent } from './components/gofit/gofit.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AllProductsComponent } from './admin/all-products/all-products.component';
+import { ListAllSellerAndUserComponent } from './admin/list-all-seller-and-user/list-all-seller-and-user.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { DeveloperComponent } from './developer/developer/developer.component';
+import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import { FlipComponent } from './flip/flip.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +86,14 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
     SellerDashBoardComponent,
     ProductsComponent,
     AddProductComponent,
-    GofitComponent
+    GofitComponent,
+    AdminDashboardComponent,
+    AllProductsComponent,
+    ListAllSellerAndUserComponent,
+    AdminHomeComponent,
+    DeveloperComponent,
+    AdminPageComponent,
+    FlipComponent
   ],
   imports: [
     BrowserModule,
@@ -100,11 +115,13 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true
-    })
+    }),
+    DatePipe
   ],
   providers: [
     provideAnimations(), // required animations providers
     provideToastr(), // Toastr providers
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

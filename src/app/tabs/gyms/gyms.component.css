@@ -1,11 +1,12 @@
 .box{
-    padding: 10px 0;
+    padding: 20px 0;
     display: flex;
     row-gap: 20px;
     column-gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
     background: black;
+    min-height: 700px;
 }
 
 .items{
@@ -52,7 +53,7 @@
 .items button{
     position: absolute;
     bottom: 25px;
-    left: 102px;
+    left: 90px;
 }
 
 .items .btn-n{

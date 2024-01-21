@@ -49,16 +49,17 @@ export class SellerLoginComponent implements AfterViewInit{
       // 'confirmPassword' : new FormControl(''),
     })
 
-    this.getAllSeller()
+    // this.getAllSeller()
   }
 
   onLogin(){
     console.log("loginWorks");
     console.log(this.loginForm.value);
-    this.sellerService_.loginSeller(this.loginForm.value).subscribe((res)=>{
+    this.sellerService_.loginSeller(this.loginForm.value).subscribe((res:any)=>{
       console.log(res);
-      let data = res;
-      const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data),'data_key').toString();
+      let id = res.sellerID;
+      localStorage.setItem('id',id)
+      const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(res),'data_key').toString();
       localStorage.setItem('seller',encryptedData)
       this.sellerService_.sellerLogin.next(true)
       this.router.navigate(['./dashboard'])
@@ -66,16 +67,20 @@ export class SellerLoginComponent implements AfterViewInit{
   }
 
   onRegistration(){
-    this.checkEmailExistOrNot(this.registrationForm.value.email);
-    if(this.emailIdExist === null){
-      this.sellerService_.registerSeller(this.registrationForm.value).subscribe((res)=>{
+    this.sellerService_.emailAlreadyExist(this.registrationForm.value.email).subscribe((res)=>{
+      if(res != null){
+        this.emailIdExist = res;
+        alert("Email id exist")
         console.log(res);
-        alert("Seller Registration Successfull...")
-        this.loginPage = true
-      })
-    }else{
-      alert("Email id Already Exist")
-    }
+      }else{
+        this.sellerService_.registerSeller(this.registrationForm.value).subscribe((res)=>{
+          console.log(res);
+          alert("Seller Registration Successfull...")
+          this.loginPage = true
+        })
+      }
+    })
+    
   }
 
   switchTab(){
@@ -92,7 +97,7 @@ export class SellerLoginComponent implements AfterViewInit{
   }
 
   checkEmailExistOrNot(emailId:any){
-    this.sellerService_.emailAlreadyExist(emailId).subscribe((res)=>{
+    this.sellerService_.emailAlreadyExist(emailId.value).subscribe((res)=>{
       if(res != null){
         this.emailIdExist = res;
         console.log(res);
@@ -102,21 +107,6 @@ export class SellerLoginComponent implements AfterViewInit{
     })
   }
 
-  // signUpPage() {
-  //   const signUpButton: HTMLElement | null = document.getElementById('signUp');
-  //   const signInButton: HTMLElement | null = document.getElementById('signIn');
-  //   const container: HTMLElement | null = document.getElementById('container');
-
-  //   if (signUpButton && signInButton && container) {
-  //     signUpButton.addEventListener('click', () => {
-  //       container.classList.add("right-panel-active");
-  //     });
-
-  //     signInButton.addEventListener('click', () => {
-  //       container.classList.remove("right-panel-active");
-  //     });
-  //   }
-  // }
-
+ 
 
 }

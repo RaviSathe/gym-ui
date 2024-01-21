@@ -21,7 +21,7 @@ export class HomePageComponent {
     if(localStorage.getItem('seller')){
       this.sellerLoggedIn = true
     }else{
-      this.router.navigate(['./seller-login'])
+      this.router.navigate(['./flip'])
     }
   }
 

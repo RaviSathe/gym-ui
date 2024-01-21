@@ -1,1 +1,80 @@
-<h1>Hello</h1>
+<div class="box">
+    <div class="tabs">
+        <button (click)="getAllProduct()">Get All Products</button><br>
+        <button (click)="addProductForm()">Add Products</button>
+</div>
+<div class="product">
+  <div class="container"  *ngIf="productDetailPage">
+        <div class="text">Product Info</div>
+        <form [formGroup]="productListingForm">
+           <div class="form-row">
+              <div class="input-data">
+                 <input type="text" minlength="3" maxlength="22" formControlName="productName" required>
+                 <div class="underline"></div>
+                 <label >Product Name</label>
+              </div>
+              <div class="input-data">
+                 <input type="text" formControlName="image" required>
+                 <div class="underline"></div>
+              </div>
+           </div>
+           <div class="form-row">
+              <div class="input-data">
+                <select id="country" name="category" formControlName="category">
+                  <option value="gym">Gym</option>
+                  <option value="protine">Protine</option>
+                  <option value="gym-equipments">Gym Equipments</option>
+                  <option value="house-keeping">House Keeping</option>
+                  <option value="personal-trainer">Personal Trainer</option>
+                  <option value="diet-plan">Diet Plan</option>
+                  <option value="gym-requirement">Gym Requirement</option>
+                  <option value="machine-repair">Machine Repair</option>
+                  <option value="protine-cafe">Protine Cafe</option>
+                  <option value="sportware">Sports Ware</option>
+                  <option value="other">Other</option>
+                </select>
+                 <div class="underline"></div>
+                 <label>Category</label>
+              </div>
+              <div class="input-data">
+                <select id="useOfProduct" name="useOfProduct" formControlName="category" formControlName="useOfProduct">
+                  <option value="add-a-shop">Add a Shop</option>
+                  <option value="sale-on-goFit">Sale on goFit</option>
+                </select>
+                 <div class="underline"></div>
+                 <label>Use Of Product</label>
+              </div>
+           </div>
+           <div class="form-row">
+           <div class="input-data textarea">
+              <textarea rows="8" cols="80" formControlName="description" required></textarea>
+              <br />
+              <div class="underline"></div>
+              <label>Description</label>
+              <br />
+              <div class="form-row submit-btn">
+                 <div class="input-data">
+                    <div class="inner"></div>
+                    <button [disabled]="!productListingForm.valid" (click)="addProduct()" type="submit" >Add Product</button>
+                 </div>
+              </div>
+           </div>
+           </div>
+        </form>
+  </div>
+  <div class="pro" *ngIf="!productDetailPage">
+    <div class="item" *ngFor="let item of allProduct; index as i">
+      <img src="{{item.image}}" alt="product image">
+      <h1>{{item.productName}}</h1>
+      <h4>{{item.description}}</h4>
+      <div class="action">
+        <button type="button" class="btn btn-info">View</button>
+        <button type="button" class="btn btn-warning">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="deleteProductById(item.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+   

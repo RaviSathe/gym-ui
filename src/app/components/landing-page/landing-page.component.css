@@ -1,20 +1,13 @@
 *{
     margin: 0;
     padding: 0;
-    /* font-family: "Poppins", sans-serif; */
     font-family: Arial, Helvetica, sans-serif;
-    /* background-position: center; */
-    /* background-image: c; */
-    /* background-size: cover; */
-    /* background: rgb(155, 152, 152); */
 }
 .header-box{
     margin: auto;
 }
 
 .header-logo img{
-    /* margin: 7px;      */
-    /* filter: b; */
     background: gold;
     border-radius: 50%;
     cursor: pointer;
@@ -76,15 +69,14 @@
     font-weight: bold;
     letter-spacing: 0.5px;
     transition: 0.4s;
+    border:1px solid gold ;
+    cursor: pointer;
 }
 
 .header-login-btn button:hover{
-    border:1px solid gold ;
     color: gold;
     background: white;
-    /* padding: 14px 25px; */
     transform: scale(1.1);
-    cursor: pointer;
     box-shadow: 0 0 20px gold;
 }
 
@@ -135,7 +127,6 @@
 
 
 .box{
-    /* height: 100vh; */
     margin: 100px 0;
     display: flex;
     background: linear-gradient(#303036, #372728);

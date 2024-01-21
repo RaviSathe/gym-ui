@@ -24,20 +24,6 @@ export class GymsComponent {
   }
 
 
-  gyms = [
-    {image:'/assets/gym-imgs/2.jpg',
-    name:'Hello GYM',
-     description:'Hello GYM',
-    },
-    {image:'/assets/gym-imgs/3.jpg',
-    name:'Hello GYM',
-     description:'Hello GYM',
-    },
-    {image:'/assets/gym-imgs/6.jpg',
-    name:'Hello GYM',
-     description:'Hello GYM',
-    }
-   
-  ]
+  gyms:any = [ ]
 
 }

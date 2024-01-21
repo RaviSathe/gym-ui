@@ -23,6 +23,12 @@ export class AddProductComponent {
       this.productDetailPage = true
     }
 
+    if(localStorage.getItem('seller')){
+      this.router.navigate(['addProduct'])
+    }else{
+      this.router.navigate(['./seller-login'])
+    }
+
     this.productListingForm = new FormGroup({
       'name' : new FormControl('',Validators.required),
       'useOfProduct' : new FormControl('',Validators.required),

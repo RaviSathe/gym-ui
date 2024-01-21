@@ -2,10 +2,15 @@
     background: url('https://hips.hearstapps.com/hmg-prod/images/dumbbells-gym-64a3f4bc2fe31.jpg');
     object-fit: cover;
     background-position: center;
+    min-height: 800px;
 }
 
 .btn-link{
     position: relative;
+}
+
+h1{
+    color: gold;
 }
 
 .btn-link a{
@@ -61,6 +66,7 @@ input::placeholder{
     background: white;
     transition: 0.4s;
     text-decoration: none;
+    margin-bottom: 10px;
 }
 
 .btn-n:hover{

@@ -1,3 +1,77 @@
-.content{
+/* .content{
     height: 1000px;
+} */
+.box{
+    background: linear-gradient( black,green);
+    background-clip: text;
+    color: transparent;
+    font-size: 80px;
+}
+
+.containerr{
+    background:linear-gradient(rgb(9, 13, 16) 45%,rgb(7, 67, 86));
+    height: 900px;
+}
+
+.header{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+.header ul li{
+    display: inline-block;
+    margin: 0 25px;
+    transition: 0.4s;
+}
+
+.header ul li:hover{
+    color: rgb(45, 176, 216);
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.login-btn{
+    padding:5px 20px;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+    color: rgb(45, 176, 216);
+    border: 1px solid rgb(45, 176, 216);
+    /* animation: buttonGlow 1s infinite; */
+}
+.login-btn:hover{
+    color: white;
+    background: rgb(45, 176, 216);
+    border: 1px solid rgb(7, 67, 86);
+}
+
+@keyframes buttonGlow{
+    0%{
+        color: rgb(7, 67, 86);
+         border: 1px solid rgb(7, 67, 86);
+    }
+    50%{
+        color: rgb(45, 176, 216);
+        border: 1px solid rgb(45, 176, 216);
+    }
+    100%{
+        color: rgb(7, 67, 86);
+         border: 1px solid rgb(7, 67, 86);
+    }
+}
+
+.marqueText{
+    background: rgb(5, 48, 61);
+    height: 70px;
+    width: 100%;
+    font-size: 50px;
+    color: gold;
+    filter: drop-shadow(0 0 10px rgb(45, 176, 216));
+}
+marquee{
+    filter: drop-shadow(0 0 10px gold);
+}
+marquee span{
+    color: red;
 }

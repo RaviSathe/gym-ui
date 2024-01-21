@@ -1,0 +1,17 @@
+.topleft{
+    display: flex;
+    width: 400pxpx;
+    justify-content: space-between;
+}
+
+.select{
+    display: inline-block;
+    height: 36px;
+    width: 90px;
+    margin-right: 5px;
+}
+
+
+.tableName{
+    color: black;
+}

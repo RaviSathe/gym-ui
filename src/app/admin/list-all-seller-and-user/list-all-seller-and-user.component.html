@@ -1,0 +1,85 @@
+    <div class="box">
+        <div class="topleft">
+            <div>
+                <button type="button" class="btn btn-primary" *ngIf="userTable" (click)="refreshUserData()">Refresh</button>
+                <button type="button" class="btn btn-primary" *ngIf="!userTable" (click)="refreshSellerData()">Refresh</button>
+            </div>
+            <div class="tableName">
+                <h1>{{tableName}}</h1>
+            </div>
+            <form >
+                    <select id="country" name="category" #val class="select" (change)="selectedDropdown(val)">
+                        <option value="user">Users</option>
+                        <option value="seller">Sellers</option>
+                    </select>
+                    <button type="button" (click)="selectedDropdown(val)" class="btn btn-outline-success">submit</button>
+                    <!-- <button class="dd-btn" >submit</button> -->
+            </form>
+            {{select}}
+        </div>
+    <table class="table" *ngIf="userTable">
+            <thead>
+                <tr>
+                <th>Sr</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Mobile Number</th>
+                <th>User ID</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users;index as i">
+                <td>{{i+1}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.mobileNo}}</td>
+                <td>{{user.userID}}</td>
+                <td>{{user.date}}</td>
+                <td>
+                    <button type="button" class="btn btn-success">Active</button>&nbsp;
+                    <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>&nbsp;
+                    <button type="button" class="btn btn-info">Info</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- -------------------seller table---------------- -->
+
+    <table class="table" *ngIf="!userTable">
+        <thead>
+            <tr>
+            <th>Sr</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Mobile Number</th>
+            <th>Seller ID</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let seller of sellers;index as i">
+            <td>{{i+1}}</td>
+            <td>{{seller.firstName}}</td>
+            <td>{{seller.lastName}}</td>
+            <td>{{seller.email}}</td>
+            <td>{{seller.age}}</td>
+            <td>{{seller.mobileNo}}</td>
+            <td>{{seller.sellerID}}</td>
+            <td>
+                <button type="button" class="btn btn-success">Active</button>&nbsp;
+                <button type="button" class="btn btn-danger" (click)="deleteSeller(seller.id)">Delete</button>&nbsp;
+                <button type="button" class="btn btn-info">Info</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    </div>

@@ -27,7 +27,7 @@
                 <input type="password" matInput placeholder="********" formControlName="password">
               </mat-form-field><br>
               <div class="btn-link">
-                <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-outline-info" (click)="onRegistration()">Register</button>
+                <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-primary" (click)="onRegistration()">Register</button>
                 <a (click)="switchTab()">Already Have account ? </a>
               </div>
         </form>
@@ -48,6 +48,11 @@
               </div>
               </form>
     </div>
+  </div>
+
+  <div class="otp" *ngIf="otpBox">
+    <input type="text" maxlength="6" #otp placeholder="OTP">
+    <button (click)="otpSubmit(otp)">Submit</button>
   </div>
   
   <button (click)="getAllUser()">GetAllUsers</button>

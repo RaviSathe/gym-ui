@@ -76,8 +76,8 @@ export class HomeComponent implements AfterViewInit{
 
   getMorePersonlTrainer(){
     if(localStorage.getItem('user')){
-    console.log("protine-cafe");
-    this.router.navigate(['protine-cafe'])
+    console.log("personal-trainer");
+    this.router.navigate(['personal-trainer'])
     }else{
       this.router.navigate(['register-login'])
     }

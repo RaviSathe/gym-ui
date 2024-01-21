@@ -50,8 +50,10 @@ export class SellerService {
         }
       })
     })
+  }
 
-    
+  public deleteSellerById(id:any){
+    return this.http.delete(`http://localhost:9090/seller/deleteSellerById/${id}`)
   }
 
 
