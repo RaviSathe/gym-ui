@@ -3,31 +3,32 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SellerService } from 'src/app/appService/seller.service';
 import * as CryptoJS from 'crypto-js';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-seller-login',
   templateUrl: './seller-login.component.html',
   styleUrls: ['./seller-login.component.css']
 })
-export class SellerLoginComponent implements AfterViewInit{
-  
-  constructor(private sellerService_:SellerService, private router: Router){
-    this.sellerService_.getAllSeller().subscribe((res)=>{
-      this.allSellers = res
-    })
-  }
-  ngAfterViewInit(): void {
-    // console.log(this.allSellers);
-  }
-  
+export class SellerLoginComponent {
   emailIdExist: any;
   loginForm!:FormGroup
   registrationForm!:FormGroup
   loginPage:boolean = true;
   allSellers:any;
+  myDate = new Date()
+  
+  constructor(private sellerService_:SellerService, private router: Router, private datatype: DatePipe){
+    this.sellerService_.getAllSeller().subscribe((res)=>{
+      this.allSellers = res
+    })
+  }
+  
   // emailExist:boolean = false
 
   ngOnInit(){
+    let latest_date =this.datatype.transform(this.myDate, 'yyyy-MM-dd');
+
     if(localStorage.getItem('seller')){
       this.router.navigate(['dashboard'])
     }
@@ -46,7 +47,7 @@ export class SellerLoginComponent implements AfterViewInit{
       'age' : new FormControl('', [Validators.required]),
       'mobileNo' : new FormControl('', [Validators.required]),
       'password' : new FormControl('', [Validators.required]),
-      // 'confirmPassword' : new FormControl(''),
+      'date' : new FormControl(latest_date),
     })
 
     // this.getAllSeller()
@@ -88,10 +89,11 @@ export class SellerLoginComponent implements AfterViewInit{
   }
 
   getAllSeller(){
-    this.sellerService_.getAllSeller().subscribe((res)=>{
-      this.allSellers = res
-      this.allSellers.forEach((el:any)=>{
-          console.log(el);  
+    this.sellerService_.getAllSeller().subscribe((res:any)=>{
+      res.filter((find:any)=>{
+        if(find.email === this.loginForm.value.email){
+          this.sellerService_.activeSeller.push(find)
+        }
       })
     })
   }

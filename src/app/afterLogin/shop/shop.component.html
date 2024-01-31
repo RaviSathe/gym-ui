@@ -1,0 +1,14 @@
+<div class="box">
+    <div class="search">
+        <input type="text" placeholder="Search here" [(ngModel)]="searchText">
+        <button>Search</button>
+    </div>
+    <div class="products">
+            <div class="items" *ngFor="let data of shoppingProducts | search: searchText; index as i">
+                <img src="/assets/bg.jpg" alt="">
+                <h2>{{data.productName}}</h2>
+                <h4>{{data.description}}</h4>
+                <button class="btn-n">See Details</button>
+            </div>
+    </div>
+</div>

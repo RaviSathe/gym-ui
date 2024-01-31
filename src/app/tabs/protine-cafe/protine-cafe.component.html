@@ -1,8 +1,27 @@
 <div class="box">
-    <div class="items" *ngFor="let data of protineCafes">
-        <img src="/assets/bg.jpg" alt="">
-        <h2>{{data.productName}}</h2>
-        <h4>{{data.description}}</h4>
-        <button class="btn-n">See Details</button>
+    <div class="backLink" *ngIf="!productInfo" routerLink="../home"><i class="fa-solid fa-arrow-left-long"></i> Back to HOME</div>
+    <div class="products" *ngIf="!productInfo">
+        <div class="items" (click)="selectedItem(data.id)" *ngFor="let data of protineCafes">
+            <img src="/assets/bg.jpg" alt="">
+            <h2>{{data.productName}}</h2>
+            <h4>{{data.description}}</h4>
+            <button class="btn-n">See Details</button>
+        </div>
+    </div>
+    <div *ngIf="productInfo">
+        <div class="backLink" (click)="backToAllProducts()">
+            <i class="fa-solid fa-arrow-left-long"></i> Go back
+        </div>
+        <div class="ProductInfo" *ngFor="let data of filteredData">
+            <div class="left-image">
+                <img src="/assets/bg.jpg" alt="img">
+            </div>
+            <div class="right-info">
+                <h1>{{data.productName}}</h1>
+                <h3>Brand</h3>
+                <h5>ratings</h5>
+                <h5>{{data.description}}</h5>
+            </div>
+        </div>
     </div>
 </div>

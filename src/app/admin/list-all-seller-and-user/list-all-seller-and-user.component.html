@@ -4,20 +4,24 @@
                 <button type="button" class="btn btn-primary" *ngIf="userTable" (click)="refreshUserData()">Refresh</button>
                 <button type="button" class="btn btn-primary" *ngIf="!userTable" (click)="refreshSellerData()">Refresh</button>
             </div>
-            <div class="tableName">
-                <h1>{{tableName}}</h1>
+            <div>
+                <!-- <h1>{{tableName}}</h1> -->
+                <input class="searchBar" type="text" placeholder="Search Here" [(ngModel)]="searchText">
             </div>
-            <form >
+            <div>
+                <form >
                     <select id="country" name="category" #val class="select" (change)="selectedDropdown(val)">
                         <option value="user">Users</option>
                         <option value="seller">Sellers</option>
                     </select>
-                    <button type="button" (click)="selectedDropdown(val)" class="btn btn-outline-success">submit</button>
+                    <!-- <button type="button" (click)="selectedDropdown(val)" class="btn btn-outline-success">submit</button> -->
                     <!-- <button class="dd-btn" >submit</button> -->
-            </form>
+                    <button (click)="exportToExcel()"  class="btn btn-outline-success">Export Excel</button>
+                </form>
+            </div>
             {{select}}
         </div>
-    <table class="table" *ngIf="userTable">
+    <table class="table" *ngIf="userTable" id="excel-table">
             <thead>
                 <tr>
                 <th>Sr</th>
@@ -32,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of users;index as i">
+            <tr *ngFor="let user of users | search: searchText;index as i">
                 <td>{{i+1}}</td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
@@ -52,7 +56,7 @@
 
     <!-- -------------------seller table---------------- -->
 
-    <table class="table" *ngIf="!userTable">
+    <table class="table" *ngIf="!userTable" id="excel-table">
         <thead>
             <tr>
             <th>Sr</th>
@@ -61,18 +65,20 @@
             <th>Email</th>
             <th>Age</th>
             <th>Mobile Number</th>
+            <th>Date</th>
             <th>Seller ID</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let seller of sellers;index as i">
+        <tr *ngFor="let seller of sellers | search: searchText;index as i">
             <td>{{i+1}}</td>
             <td>{{seller.firstName}}</td>
             <td>{{seller.lastName}}</td>
             <td>{{seller.email}}</td>
             <td>{{seller.age}}</td>
             <td>{{seller.mobileNo}}</td>
+            <td>{{seller.date}}</td>
             <td>{{seller.sellerID}}</td>
             <td>
                 <button type="button" class="btn btn-success">Active</button>&nbsp;

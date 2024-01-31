@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginRegistrationService } from 'src/app/appService/login-registration.service';
 import { SellerService } from 'src/app/appService/seller.service';
 import { FormControl } from '@angular/forms';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-list-all-seller-and-user',
@@ -15,6 +16,8 @@ export class ListAllSellerAndUserComponent {
   select:string =''
   userTable:boolean = true
   tableName:string = 'User Table'
+  searchText='';
+  fileName = 'GoFit_Users.xlsx'
 
   constructor(private userService:LoginRegistrationService, private sellerService:SellerService){}
 
@@ -68,7 +71,25 @@ export class ListAllSellerAndUserComponent {
       this.userTable = true
       this.tableName = 'User Table'
     }
-    
+  }
+
+  exportToExcel(){
+    if(this.userTable){
+      this.fileName = 'GoFit_Users.xlsx'
+    }else{
+      this.fileName = 'GoFit_Sellers.xlsx'
+    }
+    //pass here table id
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    //generate workbook and add the worksheet
+    const wb: XLSX.WorkBook = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb , ws , 'Sheet1');
+
+    //save to file
+    XLSX.writeFile(wb , this.fileName)
+
   }
 
 }

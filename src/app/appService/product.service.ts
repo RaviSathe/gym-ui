@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-
   constructor(private http:HttpClient) {}
 
   public getAllProducts(): Observable<any> {
@@ -16,5 +15,10 @@ export class ProductService {
   public deleteProduct(id:any){
     return this.http.delete(`http://localhost:9090/product/deleteProduct/${id}`)
   }
+
+  public giveWarning(email:any){
+    return this.http.post(`http://localhost:9090/product/giveWarning`,email)
+  }
+
 
 }

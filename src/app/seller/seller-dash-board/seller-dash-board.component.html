@@ -38,8 +38,8 @@
               </div>
               <div class="input-data">
                 <select id="useOfProduct" name="useOfProduct" formControlName="category" formControlName="useOfProduct">
-                  <option value="add-a-shop">Add a Shop</option>
-                  <option value="sale-on-goFit">Sale on goFit</option>
+                  <option value="list">List on GoFit</option>
+                  <option value="sale">Sale on goFit</option>
                 </select>
                  <div class="underline"></div>
                  <label>Use Of Product</label>
@@ -63,7 +63,7 @@
         </form>
   </div>
   <div class="pro" *ngIf="!productDetailPage">
-    <div class="item" *ngFor="let item of allProduct; index as i">
+    <div class="item" *ngFor="let item of allProduct  | search: searchText; index as i">
       <img src="{{item.image}}" alt="product image">
       <h1>{{item.productName}}</h1>
       <h4>{{item.description}}</h4>

@@ -1,0 +1,29 @@
+<div class="box">
+    <h1>Send Mail to Whom ?</h1>
+    <span>Everyone</span><input type="checkbox" (change)="checkboxChecked()" class="check" #check [(ngModel)]="isChecked" [ngModelOptions]="{standalone: true}"> <span class="or">OR</span>
+    <form class="mailForm">
+        <div *ngFor="let email of emails; let i = index">
+          <label for="to{{i}}">To:</label>
+          <input type="text" class="input" [disabled]="check.checked" id="to{{i}}" [(ngModel)]="email.email" name="to{{i}}" required> <br>
+      
+          <label for="subject{{i}}">Subject:</label>
+          <input type="text" class="input" [disabled]="check.checked" id="subject{{i}}" [(ngModel)]="email.subject" name="subject{{i}}" required> <br>
+      
+          <label for="message{{i}}">Message:</label>
+          <textarea id="message{{i}}" [disabled]="check.checked" [(ngModel)]="email.body" name="message{{i}}" required></textarea> <br>
+      
+          <button type="button" class="btn btn-warning" [disabled]="check.checked" (click)="addEmail()">Add Email</button>
+          <button type="button" [disabled]="check.checked" class="btn btn-danger" (click)="removeEmail(i)">Remove</button>
+        </div>
+      
+    </form>
+    <hr>
+    <input class="input" type="text" placeholder="subject" #subject>
+    <input class="input" type="text" placeholder="body" #body>
+    <button type="button" class="btn btn-primary" (click)="sendEmails(subject,body)">Send Emails</button>
+
+      <hr>
+      <!-- <button (click)="allEmails(subject,body)">All Emails</button> -->
+
+
+</div>

@@ -1,17 +1,22 @@
 .topleft{
     display: flex;
-    width: 400pxpx;
     justify-content: space-between;
 }
 
 .select{
-    display: inline-block;
+    /* display: inline-block; */
     height: 36px;
     width: 90px;
     margin-right: 5px;
 }
 
+.select option{
+    color: red;
+}
 
-.tableName{
-    color: black;
+
+.searchBar{
+    padding: 5px 5px;
+    width: 400px;
+    font-size: 20px;
 }

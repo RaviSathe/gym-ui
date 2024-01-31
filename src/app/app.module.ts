@@ -59,6 +59,9 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { DeveloperComponent } from './developer/developer/developer.component';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { FlipComponent } from './flip/flip.component';
+import { ShopComponent } from './afterLogin/shop/shop.component';
+import { SearchPipe } from './pipe/search.pipe';
+import { NoticeComponent } from './admin/notice/notice.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +96,10 @@ import { FlipComponent } from './flip/flip.component';
     AdminHomeComponent,
     DeveloperComponent,
     AdminPageComponent,
-    FlipComponent
+    FlipComponent,
+    ShopComponent,
+    SearchPipe,
+    NoticeComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,7 +109,6 @@ import { FlipComponent } from './flip/flip.component';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    // MatSlideToggleModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
@@ -111,12 +116,11 @@ import { FlipComponent } from './flip/flip.component';
     MatSelectModule,
     SellerModule,
     ModalModule.forRoot(),
-    // Import NgxUiLoaderModule
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true
     }),
-    DatePipe
+    DatePipe,
   ],
   providers: [
     provideAnimations(), // required animations providers

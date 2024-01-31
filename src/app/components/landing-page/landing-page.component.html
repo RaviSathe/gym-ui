@@ -7,7 +7,7 @@
         <h1 *ngIf="!loginButton">Welcome to GoFit</h1>
         <ul *ngIf="loginButton">
             <li routerLink="./home" routerLinkActive="active">Home</li>
-            <li>Shops</li>
+            <li routerLink="./shop">Shops</li>
             <li routerLink="./service" [routerLinkActive]="'active'">Service</li>
             <li routerLink="./contact-us" [routerLinkActive]="'active'">Contact</li>
             <li routerLink="./about" [routerLinkActive]="'active'">About</li>

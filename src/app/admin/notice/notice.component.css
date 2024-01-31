@@ -1,0 +1,40 @@
+*{
+    color: black;
+}
+
+.box{
+    color: black;
+    width: 80%;
+    margin: auto;
+}
+
+.input{
+    padding: 10px 20px;
+    width: 400px;
+    font-size: 20px;
+    margin: 5px;
+}
+textarea{
+    margin-left: 6px;
+}
+
+button{
+    margin: 10px;
+}
+
+label{
+    width: 100px;
+    text-align: center;
+}
+form{
+    width: 100%;
+}
+
+.mailForm{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 200px;
+}
+
+

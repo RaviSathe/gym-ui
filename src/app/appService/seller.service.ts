@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class SellerService {
   makeAShop:any
   result:any =[]
-  saleOnGofit:any =[]
+  activeSeller:any =[]
 
   constructor(private http:HttpClient) { }
 

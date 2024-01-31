@@ -32,6 +32,8 @@ import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { ListAllSellerAndUserComponent } from './admin/list-all-seller-and-user/list-all-seller-and-user.component';
 import { FlipComponent } from './flip/flip.component';
+import { ShopComponent } from './afterLogin/shop/shop.component';
+import { NoticeComponent } from './admin/notice/notice.component';
 
 const routes: Routes = [
   // {path:'', redirectTo:'landing-page', pathMatch:'full'},
@@ -39,6 +41,7 @@ const routes: Routes = [
   {path:'', component:LandingPageComponent , children:[
     {path:'',component:GofitComponent},
     {path:'home',component:HomeComponent},
+    {path:'shop',component:ShopComponent},
     {path:'service',component:ServiceComponent},
     {path:'contact-us',component:ContactComponent},
     {path:'about',component:AboutComponent},
@@ -66,6 +69,7 @@ const routes: Routes = [
   {path:'',component:AdminPageComponent , children:[
       {path:'admin-dashboard', component:AdminDashboardComponent},
       {path:'admin-all-product-list', component:AllProductsComponent},
+      {path:'notice', component:NoticeComponent},
       {path:'all-sellers-and-users', component:ListAllSellerAndUserComponent},
   ]},
   {path:'developer',component:DeveloperComponent},

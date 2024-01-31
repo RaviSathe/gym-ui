@@ -1,6 +1,28 @@
 .box{
-    min-height: 700px;
     background: black;
+    min-height: 700px;
+}
+
+.search{
+    text-align: center;
+    padding: 20px;
+}
+
+.search input{
+    padding: 15px 10px;
+    width: 500px;
+    border: none;
+    background: transparent;
+    box-shadow: 0 0 20px gold;
+    color: white;
+}
+
+.search button{
+    margin-left: 10px;
+    padding: 15px;
+    background: black;
+    color: gold;
+    border: 1px solid gold;
 }
 
 .products{
@@ -9,7 +31,7 @@
     column-gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px 0;
+    padding: 0 0 20px 0;
 }
 
 .items{
@@ -56,7 +78,7 @@
 .items button{
     position: absolute;
     bottom: 25px;
-    left: 102px;
+    left: 90px;
 }
 
 .items .btn-n{
@@ -71,44 +93,4 @@
 .items .btn-n:hover{
     box-shadow: 0 0 10px gold;
     transform: scale(1.1);
-}
-
-.ProductInfo{
-    display: flex;
-    padding: 20px 20px;
-}
-
-.ProductInfo .left-image{
-    text-align: center;
-    padding: 10px;
-    width: 45vw;
-    border: 1px solid red;
-    min-height: 700px;
-}
-
-.left-image img{
-    object-fit: contain;
-    background-position: center;
-}
-.right-info{
-    border: 1px solid green;
-    width: 55vw;
-    padding: 10px;
-}
-
-.right-info h1{
-    background: linear-gradient(90deg , red, green);
-    background-clip: text;
-    color: transparent;
-}
-
-.backLink{
-    padding: 20px 50px;
-    background: red;
-    width: 250px;
-    transition: 0.4s;
-    cursor: pointer;
-}
-.backLink:hover{
-    background: rgb(179, 5, 19);
 }
