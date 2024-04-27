@@ -1,15 +1,13 @@
 .box{
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
     /* text-align: center; */
     /* display: inline-block; */
 }
 .tabs{
-    width: 30%;
 }
 .product{
-    width: 68%;
 }
 .tabs button{
   padding: 10px 20px;
@@ -57,6 +55,7 @@
   column-gap: 20px;
   row-gap: 20px;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 /* -------------------- */

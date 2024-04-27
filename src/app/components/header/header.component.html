@@ -1,0 +1,32 @@
+<div class="header-box">
+    <section class="header-section1">
+        <div class="header-logo">
+        <img src="/assets/logo.png" alt="" width="70px" routerLink="/">
+    </div>
+    <div class="navTabs">
+        <h1 *ngIf="!loginButton">Welcome to GoFit</h1>
+        <ul *ngIf="loginButton">
+            <li routerLink="./home" routerLinkActive="active">Home</li>
+            <li routerLink="./shop">Shops</li>
+            <li routerLink="./service" [routerLinkActive]="'active'">Service</li>
+            <li routerLink="./contact-us" [routerLinkActive]="'active'">Contact</li>
+            <li routerLink="./about" [routerLinkActive]="'active'">About</li>
+            <li >Language</li>
+        </ul>
+    </div>
+    <div class="header-login-btn">
+        <h2 *ngIf="loginButton">{{userName | uppercase}}</h2>
+        <button *ngIf="!loginButton" (click)="login()">Login</button>
+        <button *ngIf="loginButton" (click)="logout()">LogOut</button>
+    </div>
+    <div class="label">
+        <label >
+            <i class="fas fa-bars menu-btn" onclick="menu()"></i>
+            <i class="fas fa-times menu-btn close-btn"></i>
+        </label>
+    </div>
+</section>
+</div>
+
+<!-- ------------------landing page started---------------- -->
+<router-outlet></router-outlet>

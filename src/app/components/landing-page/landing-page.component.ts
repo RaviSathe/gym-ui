@@ -10,43 +10,14 @@ import { LoginRegistrationService } from 'src/app/appService/login-registration.
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
-export class LandingPageComponent implements OnInit, AfterViewInit{
+export class LandingPageComponent{
 
-  // -------header--------
-  loginButton:boolean = false
-  userName:any
-  // -------header--------
+  ngOnInit(){
+    AOS.init()
+  }
 
   bmi:any;
   isBMI:boolean = false
-
-  
-  constructor(private router:Router, private _loginService: LoginRegistrationService,private ngxService: NgxUiLoaderService){
-    
-    this._loginService.loginButtons.subscribe((res)=>{
-      this.loginButton = res
-    })
-    
-  }
-
-  ngOnInit(){
-    AOS.init();
-    if(localStorage.getItem("user")){
-      this.loginButton = true
-      this._loginService.userLoggedIn = true
-      this._loginService.decryptData()
-      this.userName = localStorage.getItem('un')
-    }
-    // this.ngxService.start(); 
-  }
-  
-  ngAfterViewInit(){
-    // this.ngxService.stop(); // stop foreground spinner of the master loader with 'default' taskId
-      
-  }
-
-  
-
 
   calculateBMI(age:any, gender:any, height_feet:any, height_inch:any, weight:any){
     console.log(age.value,gender.value,height_feet.value,height_inch.value,weight.value);
@@ -56,22 +27,5 @@ export class LandingPageComponent implements OnInit, AfterViewInit{
     this.isBMI = true
   }
 
-  login(){
-    this.router.navigate(['register-login'])
-  }
-
-  logout(){
-    if(confirm("You Want to Logout ?")){
-      localStorage.clear()
-      this._loginService.userLoggedIn = false
-      this.loginButton = false
-      this._loginService.loginButtons.next(false)
-      this.router.navigate(['register-login'])
-      localStorage.removeItem('user')
-      this._loginService.loginButtons.next(false)
-    };
-  }
-  
-  
 
 }

@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { SellerLoginComponent } from './seller-login/seller-login.component';
-import { SellerDashBoardComponent } from './seller-dash-board/seller-dash-board.component';
-import { authGuard } from '../afterLogin/guard/auth.guard';
-import { AddProductComponent } from './add-product/add-product.component';
-import { HomePageComponent } from './home-page/home-page.component';
 
-const routes: Routes = [
-  {path:'seller-login',component:SellerLoginComponent},
-  {path:'',component:SellerDashBoardComponent,canActivate:[authGuard],children:[
-    {path:'seller-addProduct',component:AddProductComponent,canActivate:[authGuard]},
-  ]},
-]
+import { SellerRoutingModule } from './seller/seller-routing.module';
+import { SellerComponent } from './seller/seller.component';
+
 
 @NgModule({
   declarations: [
-    HomePageComponent
+    SellerComponent
   ],
-  imports: [RouterModule.forChild(routes),CommonModule],
-  exports: [RouterModule]
+  imports: [
+    CommonModule,
+    SellerRoutingModule
+  ]
 })
-export class SellerModule { }
+export class SellerModule {
+  constructor(){
+    console.log("Seller Module");
+    
+  }
+ }

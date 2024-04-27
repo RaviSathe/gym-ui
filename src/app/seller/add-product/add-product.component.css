@@ -1,4 +1,4 @@
-input[type=text], select, textarea{
+/* input[type=text], select, textarea{
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -7,13 +7,11 @@ input[type=text], select, textarea{
     resize: vertical;
   }
   
-  /* Style the label to display next to the inputs */
   label {
     padding: 12px 12px 12px 0;
     display: inline-block;
   }
   
-  /* Style the submit button */
   input[type=submit] {
     background-color: #04AA6D;
     color: white;
@@ -24,35 +22,30 @@ input[type=text], select, textarea{
     float: right;
   }
   
-  /* Style the container */
   .container {
     border-radius: 5px;
     background-color: #382c2c;
     padding: 20px;
   }
   
-  /* Floating column for labels: 25% width */
   .col-25 {
     float: left;
     width: 25%;
     margin-top: 6px;
   }
   
-  /* Floating column for inputs: 75% width */
   .col-75 {
     float: left;
     width: 75%;
     margin-top: 6px;
   }
   
-  /* Clear floats after the columns */
   .row:after {
     content: "";
     display: table;
     clear: both;
   }
   
-  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {
     .col-25, .col-75, input[type=submit] {
       width: 100%;
@@ -60,7 +53,6 @@ input[type=text], select, textarea{
     }
   }
 
-  /* ---------------------------------------- */
 
   body {
     font-family: Arial, sans-serif;
@@ -119,4 +111,17 @@ input[type=text], select, textarea{
     bottom: 0;
     left: 0;
     width: 100%;
-  }
+  } */
+
+.box{
+  text-align: center;
+}
+
+.select{
+  width: 200px;
+  height: 50px;
+}
+
+.option{
+  height: 50px;
+}

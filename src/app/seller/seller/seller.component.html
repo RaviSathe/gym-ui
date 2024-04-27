@@ -1,0 +1,32 @@
+<div class="containerr">
+    <div class="header">
+        <div class="logo">
+        LOGO
+        </div>
+        <div class="menuTabs">
+            <ul>
+                <li routerLink="dashboard">Home</li>
+                <li routerLink="addProduct">Add Product</li>
+                <li routerLink="product">Products</li>
+                <li routerLink="">About</li>
+                <li routerLink="">Features</li>
+                <li routerLink="">New</li>
+                <li routerLink="">Contact</li>
+            </ul>
+        </div>
+        <div class="login">
+          <div class="d-flex" *ngIf="!sellerLoggedIn">
+            <button class="btn btn-outline-danger" routerLink="./" type="submit">Back to GoFit</button>&nbsp;&nbsp;&nbsp;
+            <button class="login-btn" (click)="sellerLogin()" type="submit">LogIn</button>
+          </div>
+          <div class="d-flex" *ngIf="sellerLoggedIn">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="login-btn" (click)="logoutSeller()" type="submit">LogOut</button>
+          </div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="marqueText">
+    <marquee behavior="" direction="">Hello Sellers Welcome to <span>Go</span><span>Fit</span></marquee>
+  </div>

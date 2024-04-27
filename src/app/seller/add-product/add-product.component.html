@@ -1,4 +1,4 @@
-
+<!-- 
 
 <div class="container" *ngIf="productDetailPage">
     <form [formGroup]="productListingForm">
@@ -91,7 +91,6 @@
         <p>Explain any liabilities, disclaimers, or responsibilities related to using your gym.</p>
       </div>
   
-      <!-- Add more sections to cover various terms and conditions -->
   
       <div class="section checkbox-container">
         <input type="checkbox" id="agreeCheckbox" #check>
@@ -107,4 +106,12 @@
 </ng-template>
 
 
-<button (click)="getAllProduct()">getAllProduct</button>
+<button (click)="getAllProduct()">getAllProduct</button> -->
+<div class="box">
+
+  <h1>Sell Or List</h1>
+  <select class="select" #select (change)="selectOption(select)">
+    <option class="option" value="list">List</option>
+    <option class="option" value="sell">Sell</option>
+  </select>
+</div>

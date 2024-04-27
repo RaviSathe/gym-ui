@@ -19,27 +19,27 @@ import { AboutComponent } from './afterLogin/about/about.component';
 import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-found.component';
 import { authGuard } from './afterLogin/guard/auth.guard';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
-import { SellerModule } from './seller/seller.module';
 import { SellerLoginComponent } from './seller/seller-login/seller-login.component';
 import { SellerDashBoardComponent } from './seller/seller-dash-board/seller-dash-board.component';
 import { AddProductComponent } from './seller/add-product/add-product.component';
-import { GofitComponent } from './components/gofit/gofit.component';
-import { HomePageComponent } from './seller/home-page/home-page.component';
+import { SellerHomePageComponent } from './seller/seller-home-page/seller-home-page.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AllProductsComponent } from './admin/all-products/all-products.component';
 import { DeveloperComponent } from './developer/developer/developer.component';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { ListAllSellerAndUserComponent } from './admin/list-all-seller-and-user/list-all-seller-and-user.component';
-import { FlipComponent } from './flip/flip.component';
 import { ShopComponent } from './afterLogin/shop/shop.component';
 import { NoticeComponent } from './admin/notice/notice.component';
+import { ProductsComponent } from './seller/products/products.component';
+import { SellerLandingPageComponent } from './seller/seller-landing-page/seller-landing-page.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const routes: Routes = [
   // {path:'', redirectTo:'landing-page', pathMatch:'full'},
 
-  {path:'', component:LandingPageComponent , children:[
-    {path:'',component:GofitComponent},
+  {path:'', component:HeaderComponent , children:[
+    {path:'',component:LandingPageComponent},
     {path:'home',component:HomeComponent},
     {path:'shop',component:ShopComponent},
     {path:'service',component:ServiceComponent},
@@ -58,21 +58,26 @@ const routes: Routes = [
     {path:'sports-ware',component:SportsWareComponent,canActivate:[authGuard]},
   ]},
 
-  {path:'',component:HomePageComponent,children:[
-    {path:'flip',component:FlipComponent},
+  {path:'',component:SellerHomePageComponent,children:[
+    {path:'seller-landing',component:SellerLandingPageComponent},
     {path:'seller-login',component:SellerLoginComponent},
     {path:'dashboard',component:SellerDashBoardComponent,canActivate:[authGuard]},
     {path:'addProduct',component:AddProductComponent,canActivate:[authGuard]},
   ]},
-
+  // { path: '', loadChildren: () => import('./seller/seller.module').then(m => m.SellerModule) },
+  
   {path:'admin-login', component:AdminLoginComponent},
   {path:'',component:AdminPageComponent , children:[
-      {path:'admin-dashboard', component:AdminDashboardComponent},
-      {path:'admin-all-product-list', component:AllProductsComponent},
-      {path:'notice', component:NoticeComponent},
-      {path:'all-sellers-and-users', component:ListAllSellerAndUserComponent},
+    {path:'admin-dashboard', component:AdminDashboardComponent},
+    {path:'admin-all-product-list', component:AllProductsComponent},
+    {path:'notice', component:NoticeComponent},
+    {path:'all-sellers-and-users', component:ListAllSellerAndUserComponent},
   ]},
+
+  
   {path:'developer',component:DeveloperComponent},
+  {path:'product',component:ProductsComponent},
+  
  
   {path:'**',component:PageNotFoundComponent},
 ];

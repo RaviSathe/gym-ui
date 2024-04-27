@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlipComponent } from './flip.component';
+import { SellerComponent } from './seller.component';
 
-describe('FlipComponent', () => {
-  let component: FlipComponent;
-  let fixture: ComponentFixture<FlipComponent>;
+describe('SellerComponent', () => {
+  let component: SellerComponent;
+  let fixture: ComponentFixture<SellerComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FlipComponent]
+      declarations: [SellerComponent]
     });
-    fixture = TestBed.createComponent(FlipComponent);
+    fixture = TestBed.createComponent(SellerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -25,10 +25,10 @@ this.refreshProduct()
     console.log(id);
     console.log(this.allProduct);
     
-    // this._pro.giveWarning(this.sellerData.email).subscribe((res)=>{
-    //   console.log(res);
+    this._pro.giveWarning(this.sellerData.email).subscribe((res)=>{
+      console.log(res);
       
-    // })
+    })
   }
 
   refreshProduct(){
@@ -45,5 +45,8 @@ this.refreshProduct()
       this.refreshProduct()
     })
   }
+
+  p: number = 1;
+  // collection: any[] = any;
 
 }

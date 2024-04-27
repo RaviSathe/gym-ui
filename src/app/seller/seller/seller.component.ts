@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import { SellerService } from 'src/app/appService/seller.service';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  selector: 'app-seller',
+  templateUrl: './seller.component.html',
+  styleUrls: ['./seller.component.css']
 })
-export class HomePageComponent {
-
+export class SellerComponent {
   sellerLoggedIn:boolean = false;
 
   constructor(private router: Router, private _ser:SellerService){
@@ -21,7 +20,7 @@ export class HomePageComponent {
     if(localStorage.getItem('seller')){
       this.sellerLoggedIn = true
     }else{
-      this.router.navigate(['./flip'])
+      this.router.navigate(['./seller'])
     }
   }
 

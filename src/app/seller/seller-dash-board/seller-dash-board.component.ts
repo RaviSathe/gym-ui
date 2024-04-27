@@ -5,7 +5,6 @@ import * as CryptoJS from 'crypto-js'
 import { ProductService } from 'src/app/appService/product.service';
 import { SellerService } from 'src/app/appService/seller.service';
 
-
 @Component({
   selector: 'app-seller-dash-board',
   templateUrl: './seller-dash-board.component.html',

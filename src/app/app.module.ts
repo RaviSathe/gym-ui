@@ -26,13 +26,10 @@ import { PageNotFoundComponent } from './afterLogin/page-not-found/page-not-foun
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideToastr } from 'ngx-toastr';
 
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { SellerLoginComponent } from './seller/seller-login/seller-login.component';
@@ -46,8 +43,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ProductsComponent } from './seller/products/products.component';
 import { AddProductComponent } from './seller/add-product/add-product.component';
-import { SellerModule } from './seller/seller.module';
-import { GofitComponent } from './components/gofit/gofit.component';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 
@@ -56,12 +51,15 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { AllProductsComponent } from './admin/all-products/all-products.component';
 import { ListAllSellerAndUserComponent } from './admin/list-all-seller-and-user/list-all-seller-and-user.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
-import { DeveloperComponent } from './developer/developer/developer.component';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
-import { FlipComponent } from './flip/flip.component';
 import { ShopComponent } from './afterLogin/shop/shop.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { NoticeComponent } from './admin/notice/notice.component';
+import { SellerHomePageComponent } from './seller/seller-home-page/seller-home-page.component';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DeveloperComponent } from './developer/developer/developer.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -89,17 +87,17 @@ import { NoticeComponent } from './admin/notice/notice.component';
     SellerDashBoardComponent,
     ProductsComponent,
     AddProductComponent,
-    GofitComponent,
     AdminDashboardComponent,
     AllProductsComponent,
     ListAllSellerAndUserComponent,
     AdminHomeComponent,
-    DeveloperComponent,
     AdminPageComponent,
-    FlipComponent,
     ShopComponent,
     SearchPipe,
     NoticeComponent,
+    SellerHomePageComponent,
+    DeveloperComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -108,25 +106,29 @@ import { NoticeComponent } from './admin/notice/notice.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
     MatSidenavModule,
     MatSelectModule,
-    SellerModule,
+    // SellerModule,
     ModalModule.forRoot(),
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true
     }),
     DatePipe,
+    NgxPaginationModule
   ],
   providers: [
     provideAnimations(), // required animations providers
-    provideToastr(), // Toastr providers
     DatePipe
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(){
+    console.log("App Module Loaded");
+    
+  }
+}

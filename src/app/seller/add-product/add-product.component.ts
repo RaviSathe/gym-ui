@@ -71,4 +71,9 @@ export class AddProductComponent {
     })
   }
 
+  selectOption(option:any){
+    console.log(option.value);
+    
+  }
+
 }

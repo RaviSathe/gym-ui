@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of allProduct">
+            <tr *ngFor="let item of allProduct| paginate: { itemsPerPage: 10, currentPage: p }">
                 <td>{{item.productName}}</td>
                 <td>{{item.image}}</td>
                 <td>{{item.useOfProduct}}</td>
@@ -26,4 +26,7 @@
             </tr>
         </tbody>
     </table>
+    <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
 </div>
